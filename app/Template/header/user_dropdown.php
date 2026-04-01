@@ -1,16 +1,27 @@
-<div class="dropdown">
-    <a href="#" class="dropdown-menu dropdown-menu-link-icon"><?= $this->avatar->currentUserSmall('avatar-inline') ?><i class="fa fa-caret-down"></i></a>
+<div class="dropdown kb-header-menu kb-header-user-menu">
+    <a href="#" class="dropdown-menu dropdown-menu-link-icon kb-header-action-trigger kb-header-avatar-trigger" aria-label="<?= t('User menu') ?>">
+        <?= $this->avatar->currentUserSmall('avatar-inline') ?>
+        <i class="fa fa-caret-down kb-header-caret"></i>
+    </a>
+
     <ul>
-        <li class="no-hover"><strong><?= $this->text->e($this->user->getFullname()) ?></strong></li>
+        <li class="no-hover kb-header-user-summary">
+            <p class="kb-header-user-name"><?= $this->text->e($this->user->getFullname()) ?></p>
+            <div class="kb-header-user-role"><?= t('Account menu') ?></div>
+        </li>
+
         <li>
             <?= $this->url->icon('tachometer', t('My dashboard'), 'DashboardController', 'show', array('user_id' => $this->user->getId())) ?>
         </li>
+
         <li>
             <?= $this->url->icon('home', t('My profile'), 'UserViewController', 'show', array('user_id' => $this->user->getId())) ?>
         </li>
+
         <li>
             <?= $this->url->icon('folder', t('Projects management'), 'ProjectListController', 'show') ?>
         </li>
+
         <?php if ($this->user->hasAccess('UserListController', 'show')): ?>
             <li>
                 <?= $this->url->icon('user', t('Users management'), 'UserListController', 'show') ?>
@@ -28,10 +39,13 @@
 
         <?= $this->hook->render('template:header:dropdown') ?>
 
+        <li><hr class="kb-header-menu-divider"></li>
+
         <li>
             <i class="fa fa-fw fa-life-ring" aria-hidden="true"></i>
             <?= $this->url->doc(t('Documentation')) ?>
         </li>
+
         <?php if (! DISABLE_LOGOUT): ?>
             <li>
                 <?= $this->url->icon('sign-out', t('Logout'), 'AuthController', 'logout', [], true) ?>

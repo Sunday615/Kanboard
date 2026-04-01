@@ -16,704 +16,765 @@ if (! empty($overview_paginator)) {
 ?>
 
 <style>
-.kb-dashboard-page {
-    --kb-primary: #2563eb;
-    --kb-primary-dark: #1d4ed8;
-    --kb-primary-soft: #eff6ff;
-    --kb-primary-soft-2: #dbeafe;
-    --kb-bg: #f4f8fc;
+.kb-overview-page {
+    --kb-primary: #0011ff;
+    --kb-primary-dark: #000ba6;
+    --kb-primary-soft: #eaf0ff;
+    --kb-primary-soft-2: #f3f7ff;
+
+    --kb-accent-indigo: #0011ff;
+    --kb-accent-violet: #1d4ed8;
+    --kb-accent-fuchsia: #2563eb;
+    --kb-accent-sky: #3b82f6;
+    --kb-accent-emerald: #0ea5e9;
+
+    --kb-border: #dce6ff;
+    --kb-border-strong: #c4d5ff;
     --kb-surface: #ffffff;
-    --kb-surface-muted: #f8fbff;
-    --kb-border: #dbe5f1;
-    --kb-border-strong: #c9d8ea;
+    --kb-surface-muted: #f6f9ff;
+    --kb-surface-soft: #fbfdff;
     --kb-text: #0f172a;
     --kb-text-soft: #475569;
     --kb-text-muted: #64748b;
-    --kb-success-soft: #ecfeff;
+    --kb-success: #16a34a;
+
+    --kb-gradient-primary: linear-gradient(90deg, rgba(0, 11, 166, 1) 0%, rgba(0, 17, 255, 1) 100%);
+    --kb-gradient-soft: linear-gradient(180deg, #ffffff 0%, #f6f9ff 52%, #eef4ff 100%);
+    --kb-gradient-chip: linear-gradient(135deg, rgba(0, 11, 166, 0.10) 0%, rgba(0, 17, 255, 0.14) 100%);
+    --kb-gradient-line: linear-gradient(180deg, #000ba6 0%, #0011ff 100%);
+    --kb-gradient-metric-1: linear-gradient(135deg, rgba(0, 11, 166, 0.10) 0%, rgba(29, 78, 216, 0.06) 100%);
+    --kb-gradient-metric-2: linear-gradient(135deg, rgba(0, 17, 255, 0.10) 0%, rgba(59, 130, 246, 0.06) 100%);
+    --kb-gradient-pill: linear-gradient(135deg, #f4f8ff 0%, #edf4ff 100%);
+
+    --kb-shadow-xs: 0 4px 12px rgba(15, 23, 42, 0.04);
+    --kb-shadow-sm: 0 10px 24px rgba(15, 23, 42, 0.06);
+    --kb-shadow-md: 0 18px 42px rgba(15, 23, 42, 0.08);
+    --kb-shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.10);
+    --kb-shadow-purple: 0 18px 36px rgba(0, 17, 255, 0.14);
+
     --kb-radius-xl: 24px;
     --kb-radius-lg: 18px;
     --kb-radius-md: 14px;
-    --kb-radius-sm: 12px;
-    --kb-shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.10);
-    --kb-shadow-md: 0 14px 34px rgba(15, 23, 42, 0.07);
-    --kb-shadow-sm: 0 8px 20px rgba(15, 23, 42, 0.05);
-    --kb-transition: 180ms ease;
+    --kb-radius-pill: 999px;
 
-    padding: 1.5rem 0 2.75rem;
-    background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.05), transparent 22%),
-        linear-gradient(180deg, #f8fbff 0%, #f4f8fc 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 6px 0 12px;
 }
 
-.kb-dashboard-page,
-.kb-dashboard-page * {
+.kb-overview-page * {
     box-sizing: border-box;
 }
 
-.kb-dashboard-page .card,
-.kb-dashboard-page .table-list-row,
-.kb-dashboard-page .alert,
-.kb-dashboard-page .btn,
-.kb-dashboard-page .form-control,
-.kb-dashboard-page .input-group-text,
-.kb-dashboard-page .pagination a,
-.kb-dashboard-page .pagination span {
-    transition:
-        background-color var(--kb-transition),
-        border-color var(--kb-transition),
-        color var(--kb-transition),
-        box-shadow var(--kb-transition),
-        transform var(--kb-transition);
+.kb-overview-page .kb-page-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 6px 2px 0;
 }
 
-.kb-dashboard-page .kb-hero-card {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(201, 216, 234, 0.9);
-    border-radius: 28px;
-    background:
-        radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 26%),
-        radial-gradient(circle at left bottom, rgba(96, 165, 250, 0.12), transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #f8fbff 48%, #eef5ff 100%);
-    box-shadow: var(--kb-shadow-lg);
+.kb-overview-page .kb-page-eyebrow {
+    margin: 0 0 8px;
+    color: var(--kb-primary-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-.kb-dashboard-page .kb-hero-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(135deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0) 42%);
-    pointer-events: none;
+.kb-overview-page .kb-page-title {
+    margin: 0;
+    color: var(--kb-text);
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: -0.04em;
 }
 
-.kb-dashboard-page .kb-hero-card::after {
-    content: "";
-    position: absolute;
-    right: -56px;
-    bottom: -68px;
-    width: 220px;
-    height: 220px;
-    border-radius: 999px;
-    background: rgba(37, 99, 235, 0.10);
-    filter: blur(10px);
-    pointer-events: none;
+.kb-overview-page .kb-page-copy {
+    max-width: 760px;
+    margin: 10px 0 0;
+    color: var(--kb-text-soft);
+    font-size: 0.98rem;
+    line-height: 1.75;
 }
 
-.kb-dashboard-page .kb-hero-badge {
+.kb-overview-page .kb-page-chip {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2.25rem;
-    padding: 0.5rem 0.95rem;
-    border: 1px solid rgba(37, 99, 235, 0.10);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
+    min-height: 42px;
+    padding: 0 16px;
+    border: 1px solid rgba(0, 17, 255, 0.14);
+    border-radius: var(--kb-radius-pill);
+    background:
+        var(--kb-gradient-chip),
+        linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
     color: var(--kb-primary-dark);
-    font-size: 0.76rem;
+    font-size: 0.84rem;
     font-weight: 800;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.08);
+    white-space: nowrap;
+    box-shadow: var(--kb-shadow-sm);
 }
 
-.kb-dashboard-page .kb-hero-title {
-    margin: 0.9rem 0 0.55rem;
-    color: var(--kb-text);
-    font-size: clamp(2rem, 3vw, 3.2rem);
-    line-height: 1.02;
-    font-weight: 800;
-    letter-spacing: -0.04em;
+.kb-overview-page .kb-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
 }
 
-.kb-dashboard-page .kb-hero-subtitle {
-    margin: 0;
-    max-width: 700px;
-    color: var(--kb-text-muted);
-    font-size: 1rem;
-    line-height: 1.82;
-}
-
-.kb-dashboard-page .kb-stat-card {
+.kb-overview-page .kb-metric-card {
     position: relative;
-    min-width: 150px;
-    height: 100%;
-    padding: 1.15rem 1.15rem 1.1rem;
-    border: 1px solid rgba(201, 216, 234, 0.85);
+    overflow: hidden;
+    padding: 20px 20px 18px;
+    border: 1px solid var(--kb-border);
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.84);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.08);
+    background: var(--kb-gradient-soft);
+    box-shadow: var(--kb-shadow-sm);
 }
 
-.kb-dashboard-page .kb-stat-card::before {
+.kb-overview-page .kb-metric-card:nth-child(1) {
+    background:
+        var(--kb-gradient-metric-1),
+        linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+
+.kb-overview-page .kb-metric-card:nth-child(2) {
+    background:
+        var(--kb-gradient-metric-2),
+        linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+
+.kb-overview-page .kb-metric-card::before {
     content: "";
     position: absolute;
-    inset: 0 0 auto 0;
-    height: 4px;
-    border-radius: 20px 20px 0 0;
-    background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
-    opacity: 0.9;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: var(--kb-gradient-line);
 }
 
-.kb-dashboard-page .kb-stat-label {
-    margin-bottom: 0.45rem;
+.kb-overview-page .kb-metric-card::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(0, 17, 255, 0.10) 0%, rgba(0, 17, 255, 0) 72%);
+    pointer-events: none;
+}
+
+.kb-overview-page .kb-metric-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.kb-overview-page .kb-metric-label {
     color: var(--kb-text-muted);
-    font-size: 0.75rem;
+    font-size: 0.84rem;
     font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.10em;
+    letter-spacing: 0.01em;
 }
 
-.kb-dashboard-page .kb-stat-value {
+.kb-overview-page .kb-metric-bullet {
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    background: var(--kb-gradient-primary);
+    box-shadow: 0 0 0 7px rgba(0, 17, 255, 0.10);
+}
+
+.kb-overview-page .kb-metric-value {
+    margin-top: 16px;
     color: var(--kb-text);
-    font-size: 1.85rem;
+    font-size: clamp(1.9rem, 2.2vw, 2.3rem);
     line-height: 1;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.04em;
 }
 
-.kb-dashboard-page .kb-surface-card {
+.kb-overview-page .kb-metric-note {
+    margin-top: 10px;
+    color: var(--kb-text-soft);
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.kb-overview-page .kb-card {
     border: 1px solid var(--kb-border);
     border-radius: var(--kb-radius-xl);
     background: var(--kb-surface);
     box-shadow: var(--kb-shadow-md);
 }
 
-.kb-dashboard-page .kb-search-group {
+.kb-overview-page .kb-card-body {
+    padding: 20px 22px;
+}
+
+.kb-overview-page .kb-header-card {
+    padding: 18px 22px;
+    background: var(--kb-gradient-soft);
+}
+
+.kb-overview-page .kb-table-card {
     overflow: hidden;
+    background: var(--kb-gradient-soft);
+}
+
+.kb-overview-page .kb-search-shell {
     border: 1px solid var(--kb-border);
-    border-radius: 18px;
+    border-radius: 20px;
     background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.95);
-}
-
-.kb-dashboard-page .kb-search-group:hover {
-    border-color: var(--kb-border-strong);
-}
-
-.kb-dashboard-page .kb-search-group:focus-within {
-    border-color: rgba(37, 99, 235, 0.55);
     box-shadow:
-        0 0 0 4px rgba(37, 99, 235, 0.10),
-        0 10px 25px rgba(37, 99, 235, 0.08);
+        inset 0 1px 0 rgba(255,255,255,0.95),
+        0 8px 20px rgba(15, 23, 42, 0.03);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
-.kb-dashboard-page .kb-search-group .input-group-text {
-    border: 0;
-    background: transparent;
-    color: var(--kb-text-muted);
-    padding-left: 1.15rem;
-    padding-right: 0.85rem;
+.kb-overview-page .kb-search-shell:hover {
+    border-color: rgba(0, 17, 255, 0.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.95),
+        0 14px 28px rgba(0, 17, 255, 0.05);
+}
+
+.kb-overview-page .kb-search-shell:focus-within {
+    border-color: rgba(0, 17, 255, 0.34);
+    box-shadow:
+        0 0 0 4px rgba(0, 17, 255, 0.07),
+        0 14px 30px rgba(0, 17, 255, 0.08);
+}
+
+.kb-overview-page .kb-search-row {
+    display: flex;
+    align-items: center;
+    min-height: 66px;
+}
+
+.kb-overview-page .kb-search-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    min-width: 56px;
+    color: var(--kb-primary-dark);
     font-size: 1rem;
 }
 
-.kb-dashboard-page .kb-search-input.form-control {
-    min-height: 3.8rem;
+.kb-overview-page .kb-search-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 66px;
     border: 0;
+    outline: 0;
     background: transparent;
-    box-shadow: none;
     color: var(--kb-text);
     font-size: 1rem;
-    font-weight: 500;
-    padding-left: 0;
+    font-weight: 700;
+    box-shadow: none !important;
+    padding: 0 6px 0 0;
 }
 
-.kb-dashboard-page .kb-search-input.form-control::placeholder {
+.kb-overview-page .kb-search-input::placeholder {
     color: #94a3b8;
     font-weight: 500;
 }
 
-.kb-dashboard-page .kb-search-filters {
-    display: flex;
+.kb-overview-page .kb-search-tools {
+    display: inline-flex;
     align-items: center;
-    padding-right: 0.9rem;
+    justify-content: center;
+    min-height: 66px;
+    padding: 0 16px 0 10px;
+    border-left: 1px solid #edf2ff;
+    color: var(--kb-text-soft);
 }
 
-.kb-dashboard-page .kb-search-filters > * {
+.kb-overview-page .kb-search-tools > * {
     margin-bottom: 0 !important;
 }
 
-.kb-dashboard-page .kb-section-head {
+.kb-overview-page .kb-section-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.kb-overview-page .kb-section-head {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 16px;
+    padding: 2px 2px 0;
 }
 
-.kb-dashboard-page .kb-section-overline {
-    margin: 0 0 0.38rem;
-    color: var(--kb-primary-dark);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.11em;
+.kb-overview-page .kb-section-overline {
+    margin: 0 0 6px;
+    background: linear-gradient(90deg, rgba(0, 11, 166, 1) 0%, rgba(0, 17, 255, 1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
-.kb-dashboard-page .kb-section-title {
+.kb-overview-page .kb-section-title {
     margin: 0;
     color: var(--kb-text);
-    font-size: 1.45rem;
-    line-height: 1.2;
-    font-weight: 800;
+    font-size: 1.4rem;
+    font-weight: 900;
     letter-spacing: -0.03em;
+    line-height: 1.2;
 }
 
-.kb-dashboard-page .kb-section-title a {
+.kb-overview-page .kb-section-title a {
     color: inherit;
     text-decoration: none;
 }
 
-.kb-dashboard-page .kb-section-title a:hover {
+.kb-overview-page .kb-section-title a:hover {
     color: var(--kb-primary-dark);
 }
 
-.kb-dashboard-page .kb-section-subtitle {
-    margin: 0.45rem 0 0;
-    color: var(--kb-text-muted);
-    font-size: 0.95rem;
-    line-height: 1.72;
-}
-
-.kb-dashboard-page .kb-legacy-header > *:last-child {
-    margin-bottom: 0 !important;
-}
-
-.kb-dashboard-page .kb-legacy-header {
+.kb-overview-page .kb-section-subtitle {
+    margin: 8px 0 0;
     color: var(--kb-text-soft);
+    font-size: 0.93rem;
+    line-height: 1.7;
 }
 
-.kb-dashboard-page .kb-legacy-header .btn,
-.kb-dashboard-page .kb-legacy-header button,
-.kb-dashboard-page .kb-legacy-header input[type="submit"],
-.kb-dashboard-page .kb-legacy-header a.button {
-    border-radius: 12px;
-}
-
-.kb-dashboard-page .kb-list-stack.table-list {
+.kb-overview-page .kb-list-stack.table-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
     background: transparent;
     border: 0;
     box-shadow: none;
     margin-bottom: 0;
+    padding: 18px;
 }
 
-.kb-dashboard-page .kb-project-row.table-list-row,
-.kb-dashboard-page .kb-task-row.table-list-row {
+.kb-overview-page .table-list-row {
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(219, 229, 241, 0.95);
+    border: 1px solid var(--kb-border);
     border-left: 0 !important;
     border-radius: 20px;
     background: linear-gradient(180deg, #ffffff 0%, #fcfdff 100%);
     box-shadow: var(--kb-shadow-sm);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.kb-dashboard-page .kb-project-row.table-list-row::before,
-.kb-dashboard-page .kb-task-row.table-list-row::before {
+.kb-overview-page .table-list-row::before {
     content: "";
     position: absolute;
     inset: 0 auto 0 0;
     width: 5px;
-    background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+    background: var(--kb-gradient-line);
 }
 
-.kb-dashboard-page .kb-project-row.table-list-row:hover,
-.kb-dashboard-page .kb-task-row.table-list-row:hover {
+.kb-overview-page .table-list-row:hover {
     transform: translateY(-2px);
-    border-color: #bfd3ea;
-    box-shadow: 0 16px 36px rgba(37, 99, 235, 0.10);
+    border-color: rgba(0, 17, 255, 0.18);
+    box-shadow: 0 18px 34px rgba(0, 17, 255, 0.10);
 }
 
-.kb-dashboard-page .kb-project-content,
-.kb-dashboard-page .kb-task-content {
-    padding: 1.25rem 1.3rem 1.2rem 1.5rem;
+.kb-overview-page .kb-project-content,
+.kb-overview-page .kb-task-content {
+    padding: 20px 20px 20px 24px;
 }
 
-.kb-dashboard-page .kb-project-top {
+.kb-overview-page .kb-project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.kb-overview-page .kb-project-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.kb-overview-page .kb-project-main {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.kb-overview-page .kb-project-top {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.65rem;
-    margin-bottom: 0.75rem;
+    gap: 10px;
 }
 
-.kb-dashboard-page .kb-project-id {
+.kb-overview-page .kb-project-id {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2rem;
-    padding: 0 0.78rem;
-    border: 1px solid #e2e8f0;
+    min-height: 32px;
+    padding: 0 12px;
+    border: 1px solid #dbe6ff;
     border-radius: 999px;
-    background: #f8fafc;
+    background: var(--kb-gradient-pill);
     color: var(--kb-text-soft);
     font-size: 0.82rem;
     font-weight: 800;
 }
 
-.kb-dashboard-page .kb-project-title,
-.kb-dashboard-page .kb-project-title a {
+.kb-overview-page .kb-project-title,
+.kb-overview-page .kb-project-title a {
     color: var(--kb-text);
     font-size: 1.08rem;
     line-height: 1.4;
-    font-weight: 800;
+    font-weight: 900;
     text-decoration: none;
     letter-spacing: -0.02em;
 }
 
-.kb-dashboard-page .kb-project-title a:hover {
+.kb-overview-page .kb-project-title a:hover {
     color: var(--kb-primary-dark);
 }
 
-.kb-dashboard-page .kb-private-badge {
+.kb-overview-page .kb-private-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    min-height: 2rem;
-    padding: 0 0.78rem;
-    border: 1px solid rgba(37, 99, 235, 0.10);
+    gap: 6px;
+    min-height: 32px;
+    padding: 0 12px;
+    border: 1px solid rgba(0, 17, 255, 0.14);
     border-radius: 999px;
-    background: var(--kb-primary-soft);
-    color: var(--kb-primary-dark);
-    font-size: 0.76rem;
+    background: linear-gradient(135deg, #eef4ff 0%, #f5f9ff 100%);
+    color: #1d4ed8;
+    font-size: 0.78rem;
     font-weight: 800;
 }
 
-.kb-dashboard-page .kb-column-grid {
+.kb-overview-page .kb-column-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.7rem;
-    justify-content: flex-start;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
-.kb-dashboard-page .kb-column-pill {
+.kb-overview-page .kb-column-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    min-height: 2.45rem;
-    padding: 0.48rem 0.82rem;
-    border: 1px solid var(--kb-primary-soft-2);
+    gap: 8px;
+    min-height: 38px;
+    padding: 0 13px;
+    border: 1px solid #dee8ff;
     border-radius: 999px;
-    background: linear-gradient(180deg, #fbfdff 0%, #f4f9ff 100%);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.04);
+    background: linear-gradient(135deg, #f7faff 0%, #edf4ff 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
 }
 
-.kb-dashboard-page .kb-column-count {
+.kb-overview-page .kb-column-pill:hover {
+    transform: translateY(-1px);
+    border-color: rgba(0, 17, 255, 0.18);
+    box-shadow: 0 10px 22px rgba(0, 17, 255, 0.08);
+}
+
+.kb-overview-page .kb-column-count {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 1.8rem;
-    height: 1.8rem;
-    padding: 0 0.35rem;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 6px;
     border-radius: 999px;
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-    color: var(--kb-primary-dark);
-    font-size: 0.8rem;
-    font-weight: 800;
+    background: var(--kb-gradient-primary);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 900;
+    box-shadow: 0 8px 18px rgba(0, 17, 255, 0.18);
 }
 
-.kb-dashboard-page .kb-column-name {
+.kb-overview-page .kb-column-name {
     color: var(--kb-text-soft);
-    font-size: 0.84rem;
-    font-weight: 700;
+    font-size: 0.82rem;
+    font-weight: 800;
     white-space: nowrap;
 }
 
-.kb-dashboard-page .kb-task-row.table-list-row {
-    padding: 0;
-}
-
-.kb-dashboard-page .kb-task-content {
+.kb-overview-page .kb-task-content {
     display: grid;
-    gap: 1rem;
+    grid-template-columns: minmax(0, 1.2fr) minmax(290px, 1fr);
+    gap: 18px;
+    align-items: start;
 }
 
-.kb-dashboard-page .kb-task-row .table-list-title,
-.kb-dashboard-page .kb-task-row .task-list-title,
-.kb-dashboard-page .kb-task-row strong a,
-.kb-dashboard-page .kb-task-row .task-title a {
-    color: var(--kb-text);
-    font-weight: 800;
-    text-decoration: none;
-    letter-spacing: -0.01em;
+.kb-overview-page .kb-task-side {
+    display: grid;
+    gap: 12px;
 }
 
-.kb-dashboard-page .kb-task-row a:hover {
-    color: var(--kb-primary-dark);
-}
-
-.kb-dashboard-page .kb-task-row .task-icons,
-.kb-dashboard-page .kb-task-row .task-list-details,
-.kb-dashboard-page .kb-task-row .task-list-subtasks,
-.kb-dashboard-page .kb-task-row .task-list-avatars {
+.kb-overview-page .kb-task-side > * {
+    min-width: 0;
     margin-top: 0 !important;
+    padding: 13px 15px;
+    border: 1px solid #e6eeff;
+    border-radius: 15px;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
 }
 
-.kb-dashboard-page .kb-task-row .task-icons i,
-.kb-dashboard-page .kb-task-row .fa {
-    color: var(--kb-text-muted);
-}
-
-.kb-dashboard-page .kb-task-row .task-list-details,
-.kb-dashboard-page .kb-task-row .task-list-subtasks,
-.kb-dashboard-page .kb-task-row .task-list-avatars,
-.kb-dashboard-page .kb-task-row .task-icons {
-    padding: 0.75rem 0.9rem;
-    border: 1px solid #ebf1f7;
-    border-radius: 14px;
-    background: #fbfdff;
-}
-
-.kb-dashboard-page .kb-empty-state {
-    border: 1px dashed #c7d7ea;
+.kb-overview-page .kb-empty-state {
+    padding: 36px 26px;
+    text-align: center;
+    border: 1px dashed #cfe0ff;
     border-radius: 24px;
-    background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
-    box-shadow: var(--kb-shadow-md);
-}
-
-.kb-dashboard-page .kb-empty-icon {
-    width: 4.5rem;
-    height: 4.5rem;
-    margin: 0 auto 1rem;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-    color: var(--kb-primary-dark);
-    font-size: 1.45rem;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
-}
-
-.kb-dashboard-page .kb-pagination {
-    margin-top: 1.1rem;
-}
-
-.kb-dashboard-page .kb-pagination a,
-.kb-dashboard-page .kb-pagination span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 2.45rem;
-    min-height: 2.45rem;
-    margin-right: 0.42rem;
-    margin-bottom: 0.42rem;
-    padding: 0 0.95rem;
-    border: 1px solid #dbe5f1;
-    border-radius: 999px;
-    background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
-    color: var(--kb-text-soft);
-    font-size: 0.9rem;
-    font-weight: 800;
-    text-decoration: none;
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
-}
-
-.kb-dashboard-page .kb-pagination a:hover {
-    color: var(--kb-primary-dark);
-    border-color: #93c5fd;
-    background: #eff6ff;
-    transform: translateY(-1px);
-}
-
-.kb-dashboard-page .kb-pagination .active,
-.kb-dashboard-page .kb-pagination .current {
-    border-color: var(--kb-primary);
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    color: #ffffff;
-    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.24);
-}
-
-.kb-dashboard-page .alert {
-    border: 1px solid #dbeafe;
-    border-radius: 18px;
-    background: linear-gradient(180deg, #f8fbff 0%, #f3f8ff 100%);
-    color: var(--kb-text-soft);
+    background: var(--kb-gradient-soft);
     box-shadow: var(--kb-shadow-sm);
 }
 
-.kb-dashboard-page .btn,
-.kb-dashboard-page button,
-.kb-dashboard-page input[type="submit"],
-.kb-dashboard-page a.button {
-    border-radius: 12px !important;
-    font-weight: 700;
+.kb-overview-page .kb-empty-state-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #eef4ff 0%, #dbe8ff 55%, #f4f8ff 100%);
+    color: var(--kb-primary-dark);
+    font-size: 1.4rem;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.8),
+        0 16px 28px rgba(0, 17, 255, 0.08);
 }
 
-.kb-dashboard-page .dropdown-menu,
-.kb-dashboard-page .popover,
-.kb-dashboard-page .modal-content {
-    border-radius: 16px;
+.kb-overview-page .kb-empty-state h2 {
+    margin: 0 0 8px;
+    color: var(--kb-text);
+    font-size: 1.34rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
 }
 
-.kb-dashboard-page .table-list-row .dropdown a,
-.kb-dashboard-page .table-list-row .dropdown-menu a {
+.kb-overview-page .kb-empty-state p {
+    margin: 0;
+    color: var(--kb-text-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.kb-overview-page .kb-pagination {
+    margin-top: 4px;
+}
+
+.kb-overview-page .kb-pagination a,
+.kb-overview-page .kb-pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    padding: 0 14px;
+    border: 1px solid var(--kb-border);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--kb-text-soft);
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: var(--kb-shadow-xs);
+}
+
+.kb-overview-page .kb-pagination a:hover {
+    color: var(--kb-primary-dark);
+    border-color: #cbdcff;
+    background: linear-gradient(135deg, #f7faff 0%, #edf4ff 100%);
+}
+
+.kb-overview-page .kb-pagination .active,
+.kb-overview-page .kb-pagination .current {
+    border-color: var(--kb-primary);
+    background: var(--kb-gradient-primary);
+    color: #ffffff;
+    box-shadow: 0 12px 24px rgba(0, 17, 255, 0.22);
+}
+
+/* Make default inner task/project elements cleaner */
+.kb-overview-page .task-board,
+.kb-overview-page .table-list-row .task-title,
+.kb-overview-page .table-list-row .task-title a,
+.kb-overview-page .table-list-row .task-meta,
+.kb-overview-page .table-list-row .task-assignee,
+.kb-overview-page .table-list-row .task-date,
+.kb-overview-page .table-list-row .task-icons {
+    color: inherit;
+}
+
+.kb-overview-page .task-title,
+.kb-overview-page .task-title a {
+    color: var(--kb-text) !important;
+    font-weight: 800;
+    line-height: 1.5;
     text-decoration: none;
 }
 
-@media (min-width: 992px) {
-    .kb-dashboard-page .kb-project-layout {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1.5rem;
-    }
+.kb-overview-page .task-title a:hover {
+    color: var(--kb-primary-dark) !important;
+}
 
-    .kb-dashboard-page .kb-project-main {
-        min-width: 0;
-        flex: 1 1 auto;
-    }
+.kb-overview-page .task-icons,
+.kb-overview-page .task-meta,
+.kb-overview-page .task-date {
+    color: var(--kb-text-soft);
+}
 
-    .kb-dashboard-page .kb-column-grid {
-        justify-content: flex-end;
-    }
-
-    .kb-dashboard-page .kb-task-content {
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-        align-items: start;
-    }
+.kb-overview-page .dropdown,
+.kb-overview-page .project-dropdown {
+    position: relative;
+    z-index: 2;
 }
 
 @media (max-width: 991.98px) {
-    .kb-dashboard-page .kb-hero-card .row {
-        row-gap: 1rem;
+    .kb-overview-page .kb-page-head,
+    .kb-overview-page .kb-project-layout,
+    .kb-overview-page .kb-task-content {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
-    .kb-dashboard-page .kb-stat-card {
-        min-width: auto;
+    .kb-overview-page .kb-column-grid {
+        justify-content: flex-start;
     }
 }
 
 @media (max-width: 767.98px) {
-    .kb-dashboard-page {
-        padding-top: 1rem;
-        padding-bottom: 2rem;
+    .kb-overview-page {
+        gap: 20px;
     }
 
-    .kb-dashboard-page .kb-hero-card,
-    .kb-dashboard-page .kb-surface-card,
-    .kb-dashboard-page .kb-empty-state,
-    .kb-dashboard-page .kb-project-row.table-list-row,
-    .kb-dashboard-page .kb-task-row.table-list-row {
-        border-radius: 18px;
+    .kb-overview-page .kb-summary-grid {
+        grid-template-columns: 1fr;
     }
 
-    .kb-dashboard-page .kb-hero-title {
-        font-size: 1.95rem;
+    .kb-overview-page .kb-card-body,
+    .kb-overview-page .kb-header-card,
+    .kb-overview-page .kb-list-stack.table-list {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
-    .kb-dashboard-page .kb-hero-subtitle {
+    .kb-overview-page .kb-project-content,
+    .kb-overview-page .kb-task-content {
+        padding: 18px 16px 18px 20px;
+    }
+
+    .kb-overview-page .kb-search-row {
+        min-height: 60px;
+    }
+
+    .kb-overview-page .kb-search-input {
+        height: 60px;
         font-size: 0.95rem;
-        line-height: 1.72;
     }
 
-    .kb-dashboard-page .kb-project-content,
-    .kb-dashboard-page .kb-task-content {
-        padding: 1rem 1rem 1rem 1.2rem;
-    }
-
-    .kb-dashboard-page .kb-search-input.form-control {
-        min-height: 3.35rem;
-    }
-
-    .kb-dashboard-page .kb-section-title {
-        font-size: 1.22rem;
-    }
-
-    .kb-dashboard-page .kb-stat-value {
-        font-size: 1.65rem;
+    .kb-overview-page .kb-search-tools {
+        min-height: 60px;
+        padding-right: 12px;
     }
 }
 </style>
 
 <?= $this->hook->render('template:dashboard:show:before-filter-box', array('user' => $user)) ?>
 
-<div class="kb-dashboard-page container-xxl">
-    <div class="row g-4">
-        <div class="col-12">
-            <div class="card kb-hero-card border-0">
-                <div class="card-body p-4 p-lg-5">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-8">
-                            <span class="kb-hero-badge"><?= t('Workspace Overview') ?></span>
-                            <h1 class="kb-hero-title"><?= t('Dashboard') ?></h1>
-                            <p class="kb-hero-subtitle">
-                                <?= t('Track assigned work, search across your workspace, and stay focused on the projects that matter most.') ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="row g-3">
-                                <div class="col-6 col-lg-12 col-xl-6">
-                                    <div class="kb-stat-card">
-                                        <div class="kb-stat-label"><?= t('Visible projects') ?></div>
-                                        <div class="kb-stat-value"><?= $visibleProjects ?></div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-lg-12 col-xl-6">
-                                    <div class="kb-stat-card">
-                                        <div class="kb-stat-label"><?= t('Task groups') ?></div>
-                                        <div class="kb-stat-value"><?= $activeTaskGroups ?></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="kb-overview-page kb-page-shell">
+    <div class="kb-page-head">
+        <div>
+            <p class="kb-page-eyebrow"><?= t('Workspace') ?></p>
+            <h1 class="kb-page-title"><?= t('Dashboard Overview') ?></h1>
+            <p class="kb-page-copy">
+                <?= t('Track your projects and assigned tasks in a cleaner, more focused overview page.') ?>
+            </p>
+        </div>
+        <span class="kb-page-chip"><?= t('Live workspace') ?></span>
+    </div>
+
+    <div class="kb-summary-grid">
+        <div class="kb-metric-card">
+            <div class="kb-metric-top">
+                <span class="kb-metric-label"><?= t('Visible projects') ?></span>
+                <span class="kb-metric-bullet"></span>
             </div>
+            <div class="kb-metric-value"><?= $visibleProjects ?></div>
+            <div class="kb-metric-note"><?= t('Projects in your workspace') ?></div>
         </div>
 
-        <div class="col-12">
-            <div class="card kb-surface-card border-0">
-                <div class="card-body p-3 p-lg-4">
-                    <form method="get" action="<?= $this->url->dir() ?>" class="search">
-                        <?= $this->form->hidden('controller', array('controller' => 'SearchController')) ?>
-                        <?= $this->form->hidden('action', array('action' => 'index')) ?>
+        <div class="kb-metric-card">
+            <div class="kb-metric-top">
+                <span class="kb-metric-label"><?= t('Active task groups') ?></span>
+                <span class="kb-metric-bullet"></span>
+            </div>
+            <div class="kb-metric-value"><?= $activeTaskGroups ?></div>
+            <div class="kb-metric-note"><?= t('Grouped by project') ?></div>
+        </div>
+    </div>
 
-                        <div class="input-group input-group-lg kb-search-group">
-                            <span class="input-group-text">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </span>
-                            <?= $this->form->text(
-                                'search',
-                                array(),
-                                array(),
-                                array(
-                                    'placeholder="'.t('Search').'"',
-                                    'aria-label="'.t('Search').'"'
-                                ),
-                                'form-control kb-search-input'
-                            ) ?>
-                            <span class="input-group-text kb-search-filters">
-                                <?= $this->render('app/filters_helper') ?>
-                            </span>
-                        </div>
-                    </form>
+    <div class="kb-card">
+        <div class="kb-card-body">
+            <form method="get" action="<?= $this->url->dir() ?>" class="search">
+                <?= $this->form->hidden('controller', array('controller' => 'SearchController')) ?>
+                <?= $this->form->hidden('action', array('action' => 'index')) ?>
+
+                <div class="kb-search-shell">
+                    <div class="kb-search-row">
+                        <span class="kb-search-icon">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </span>
+
+                        <?= $this->form->text(
+                            'search',
+                            array(),
+                            array(),
+                            array(
+                                'placeholder="'.t('Search items, tasks, or projects...').'"',
+                                'aria-label="'.t('Search').'"'
+                            ),
+                            'kb-search-input'
+                        ) ?>
+
+                        <span class="kb-search-tools">
+                            <?= $this->render('app/filters_helper') ?>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <?= $this->hook->render('template:dashboard:show:after-filter-box', array('user' => $user)) ?>
+
+    <?php if (! $project_paginator->isEmpty()): ?>
+        <section class="kb-section-block">
+            <div class="kb-section-head">
+                <div>
+                    <p class="kb-section-overline"><?= t('Projects') ?></p>
+                    <h2 class="kb-section-title"><?= t('Projects overview') ?></h2>
+                    <p class="kb-section-subtitle"><?= t('Quick access to your active workspace and current column counts.') ?></p>
                 </div>
             </div>
-        </div>
 
-        <?= $this->hook->render('template:dashboard:show:after-filter-box', array('user' => $user)) ?>
-
-        <?php if (! $project_paginator->isEmpty()): ?>
-            <div class="col-12">
-                <div class="kb-section-head">
-                    <div>
-                        <p class="kb-section-overline"><?= t('Projects') ?></p>
-                        <h2 class="kb-section-title"><?= t('Projects overview') ?></h2>
-                        <p class="kb-section-subtitle"><?= t('Quick access to your active workspace and column status.') ?></p>
-                    </div>
+            <div class="kb-card">
+                <div class="kb-header-card">
+                    <?= $this->render('project_list/header', array('paginator' => $project_paginator)) ?>
                 </div>
+            </div>
 
-                <div class="card kb-surface-card border-0 mb-3">
-                    <div class="card-body p-3 p-lg-4 kb-legacy-header">
-                        <?= $this->render('project_list/header', array('paginator' => $project_paginator)) ?>
-                    </div>
-                </div>
-
+            <div class="kb-card kb-table-card">
                 <div class="table-list kb-list-stack">
                     <?php foreach ($project_paginator->getCollection() as $project): ?>
                         <div class="table-list-row table-border-left kb-project-row">
@@ -724,7 +785,7 @@ if (! empty($overview_paginator)) {
                                             <?php if ($this->user->hasProjectAccess('ProjectViewController', 'show', $project['id'])): ?>
                                                 <?= $this->render('project/dropdown', array('project' => $project)) ?>
                                             <?php else: ?>
-                                                <span class="kb-project-id"><?= '#'.$project['id'] ?></span>
+                                                <span class="kb-project-id">#<?= $project['id'] ?></span>
                                             <?php endif ?>
 
                                             <?= $this->hook->render('template:dashboard:project:before-title', array('project' => $project)) ?>
@@ -757,44 +818,46 @@ if (! empty($overview_paginator)) {
                         </div>
                     <?php endforeach ?>
                 </div>
-
-                <div class="kb-pagination">
-                    <?= $project_paginator ?>
-                </div>
             </div>
-        <?php endif ?>
 
-        <div class="col-12">
-            <?php if (empty($overview_paginator)): ?>
-                <div class="kb-empty-state text-center p-4 p-lg-5">
-                    <div class="kb-empty-icon">
-                        <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    </div>
-                    <h2 class="kb-section-title mb-2"><?= t('You are all caught up') ?></h2>
-                    <p class="kb-section-subtitle mb-0"><?= t('There is nothing assigned to you right now.') ?></p>
+            <div class="kb-pagination">
+                <?= $project_paginator ?>
+            </div>
+        </section>
+    <?php endif ?>
+
+    <section class="kb-section-block">
+        <?php if (empty($overview_paginator)): ?>
+            <div class="kb-empty-state">
+                <div class="kb-empty-state-icon">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
                 </div>
-            <?php else: ?>
-                <?php foreach ($overview_paginator as $result): ?>
-                    <?php if (! $result['paginator']->isEmpty()): ?>
-                        <section class="mb-4 mb-lg-5">
-                            <div class="kb-section-head">
-                                <div>
-                                    <p class="kb-section-overline"><?= t('Assigned tasks') ?></p>
-                                    <h2 class="kb-section-title" id="project-tasks-<?= $result['project_id'] ?>">
-                                        <?= $this->url->link($this->text->e($result['project_name']), 'BoardViewController', 'show', array('project_id' => $result['project_id'])) ?>
-                                    </h2>
-                                    <p class="kb-section-subtitle"><?= t('Tasks currently assigned to you in this project.') ?></p>
-                                </div>
+                <h2><?= t('You are all caught up') ?></h2>
+                <p><?= t('There is nothing assigned to you right now.') ?></p>
+            </div>
+        <?php else: ?>
+            <?php foreach ($overview_paginator as $result): ?>
+                <?php if (! $result['paginator']->isEmpty()): ?>
+                    <section class="kb-section-block">
+                        <div class="kb-section-head">
+                            <div>
+                                <p class="kb-section-overline"><?= t('Assigned tasks') ?></p>
+                                <h2 class="kb-section-title" id="project-tasks-<?= $result['project_id'] ?>">
+                                    <?= $this->url->link($this->text->e($result['project_name']), 'BoardViewController', 'show', array('project_id' => $result['project_id'])) ?>
+                                </h2>
+                                <p class="kb-section-subtitle"><?= t('Tasks currently assigned to you in this project.') ?></p>
                             </div>
+                        </div>
 
-                            <div class="card kb-surface-card border-0 mb-3">
-                                <div class="card-body p-3 p-lg-4 kb-legacy-header">
-                                    <?= $this->render('task_list/header', array(
-                                        'paginator' => $result['paginator'],
-                                    )) ?>
-                                </div>
+                        <div class="kb-card">
+                            <div class="kb-header-card">
+                                <?= $this->render('task_list/header', array(
+                                    'paginator' => $result['paginator'],
+                                )) ?>
                             </div>
+                        </div>
 
+                        <div class="kb-card kb-table-card">
                             <div class="table-list kb-list-stack">
                                 <?php foreach ($result['paginator']->getCollection() as $task): ?>
                                     <div class="table-list-row color-<?= $task['color_id'] ?> kb-task-row">
@@ -806,7 +869,7 @@ if (! empty($overview_paginator)) {
                                                 )) ?>
                                             </div>
 
-                                            <div class="d-grid gap-3">
+                                            <div class="kb-task-side">
                                                 <?= $this->render('task_list/task_details', array(
                                                     'task' => $task,
                                                 )) ?>
@@ -830,16 +893,16 @@ if (! empty($overview_paginator)) {
                                     </div>
                                 <?php endforeach ?>
                             </div>
+                        </div>
 
-                            <div class="kb-pagination">
-                                <?= $result['paginator'] ?>
-                            </div>
-                        </section>
-                    <?php endif ?>
-                <?php endforeach ?>
-            <?php endif ?>
-        </div>
-    </div>
+                        <div class="kb-pagination">
+                            <?= $result['paginator'] ?>
+                        </div>
+                    </section>
+                <?php endif ?>
+            <?php endforeach ?>
+        <?php endif ?>
+    </section>
 </div>
 
 <?= $this->hook->render('template:dashboard:show', array('user' => $user)) ?>
