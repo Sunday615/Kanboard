@@ -1,15 +1,16 @@
 <!-- task row -->
-<tr class="board-swimlane board-swimlane-tasks-<?= $swimlane['id'] ?><?= $swimlane['task_limit'] && $swimlane['nb_tasks'] > $swimlane['task_limit'] ? ' board-task-list-limit' : '' ?>">
+<tr class="board-swimlane board-swimlane-tasks-<?= $swimlane['id'] ?> kb-board-task-row<?= $swimlane['task_limit'] && $swimlane['nb_tasks'] > $swimlane['task_limit'] ? ' board-task-list-limit' : '' ?>">
     <?php foreach ($swimlane['columns'] as $column): ?>
         <td class="
             board-column-<?= $column['id'] ?>
+            kb-board-column-cell
             <?= $column['task_limit'] > 0 && $column['column_nb_open_tasks'] > $column['task_limit'] ? 'board-task-list-limit' : '' ?>
             "
         >
 
             <!-- tasks list -->
             <div
-                class="board-task-list board-column-expanded <?= $this->projectRole->isSortableColumn($column['project_id'], $column['id']) ? 'sortable-column' : '' ?>"
+                class="board-task-list board-column-expanded kb-board-task-list <?= $this->projectRole->isSortableColumn($column['project_id'], $column['id']) ? 'sortable-column' : '' ?>"
                 data-column-id="<?= $column['id'] ?>"
                 data-swimlane-id="<?= $swimlane['id'] ?>"
                 data-task-limit="<?= $column['task_limit'] ?>">
@@ -25,7 +26,7 @@
             </div>
 
             <!-- column in collapsed mode (rotated text) -->
-            <div class="board-column-collapsed board-task-list sortable-column"
+            <div class="board-column-collapsed board-task-list kb-board-task-list sortable-column"
                 data-column-id="<?= $column['id'] ?>"
                 data-swimlane-id="<?= $swimlane['id'] ?>"
                 data-task-limit="<?= $column['task_limit'] ?>">

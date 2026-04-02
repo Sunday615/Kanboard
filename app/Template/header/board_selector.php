@@ -1,4 +1,4 @@
-<div class="kb-header-board-shell kb-header-surface-card">
+<div class="kb-header-board-shell kb-header-surface-card kb-header-board-selector">
     <span class="kb-header-board-icon" aria-hidden="true">
         <i class="fa fa-folder-open-o"></i>
     </span>

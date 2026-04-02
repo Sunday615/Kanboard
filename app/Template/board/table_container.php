@@ -1,14 +1,15 @@
 <div id="board-container"
-     class="<?= ($project['task_limit'] && array_key_exists('nb_active_tasks', $project) && $project['nb_active_tasks'] > $project['task_limit']) ? 'board-task-list-limit' : '' ?>">
+     class="kb-board-surface <?= ($project['task_limit'] && array_key_exists('nb_active_tasks', $project) && $project['nb_active_tasks'] > $project['task_limit']) ? 'board-task-list-limit kb-board-limit' : '' ?>">
     <?php if (empty($swimlanes) || empty($swimlanes[0]['nb_columns'])): ?>
-        <p class="alert alert-error"><?= t('There is no column or swimlane activated in your project!') ?></p>
+        <p class="alert alert-error kb-board-empty-alert"><?= t('There is no column or swimlane activated in your project!') ?></p>
     <?php else: ?>
+        <div class="kb-board-scroll">
 
         <?php if (isset($not_editable)): ?>
-            <table id="board" class="board-project-<?= $project['id'] ?>">
+            <table id="board" class="board-project-<?= $project['id'] ?> kb-board-grid">
         <?php else: ?>
             <table id="board"
-                   class="board-project-<?= $project['id'] ?>"
+                   class="board-project-<?= $project['id'] ?> kb-board-grid"
                    data-project-id="<?= $project['id'] ?>"
                    data-check-interval="<?= $board_private_refresh_interval ?>"
                    data-save-url="<?= $this->url->href('BoardAjaxController', 'save', array('project_id' => $project['id'], 'csrf_token' => $this->app->getToken()->getReusableCSRFToken())) ?>"
@@ -62,6 +63,7 @@
         <?php endforeach ?>
 
         </table>
+        </div>
 
     <?php endif ?>
 </div>

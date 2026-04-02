@@ -1,9 +1,9 @@
-<div class="task-board color-<?= $task['color_id'] ?> <?= $task['date_modification'] > time() - $board_highlight_period ? 'task-board-recent' : '' ?>">
-    <div class="task-board-header">
+<div class="task-board kb-board-card color-<?= $task['color_id'] ?> <?= $task['date_modification'] > time() - $board_highlight_period ? 'task-board-recent' : '' ?>">
+    <div class="task-board-header kb-board-card-header">
         <?= $this->url->link('#'.$task['id'], 'TaskViewController', 'readonly', array('task_id' => $task['id'], 'token' => $project['token'])) ?>
 
         <?php if (! empty($task['owner_id'])): ?>
-            <span class="task-board-assignee">
+            <span class="task-board-assignee kb-board-card-assignee">
                 <?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>
             </span>
         <?php endif ?>
@@ -12,7 +12,7 @@
     </div>
 
     <?= $this->hook->render('template:board:public:task:before-title', array('task' => $task)) ?>
-    <div class="task-board-title">
+    <div class="task-board-title kb-board-card-title">
         <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'readonly', array('task_id' => $task['id'], 'token' => $project['token'])) ?>
     </div>
     <?= $this->hook->render('template:board:public:task:after-title', array('task' => $task)) ?>

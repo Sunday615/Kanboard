@@ -11,7 +11,7 @@
         $this->render('header/user_dropdown')
     )) ?>
 
-<header>
+<header class="kb-modern-app-header">
     <div class="title-container">
         <?= $_title ?>
     </div>

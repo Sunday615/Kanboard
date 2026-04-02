@@ -1,6 +1,6 @@
 <?php if (! empty($task['category_id'])): ?>
-<div class="task-board-category-container task-board-category-container-color">
-    <span class="task-board-category category-<?= $this->text->e($task['category_name']) ?> <?= $task['category_color_id'] ? "color-{$task['category_color_id']}" : '' ?>">
+<div class="task-board-category-container task-board-category-container-color kb-board-category-wrap">
+    <span class="task-board-category kb-board-category category-<?= $this->text->e($task['category_name']) ?> <?= $task['category_color_id'] ? "color-{$task['category_color_id']}" : '' ?>">
         <?php if ($not_editable): ?>
             <?= $this->text->e($task['category_name']) ?>
         <?php else: ?>
@@ -22,7 +22,7 @@
 <?php endif ?>
 
 <?php if (! empty($task['tags'])): ?>
-    <div class="task-tags">
+    <div class="task-tags kb-board-tag-list">
         <ul>
         <?php foreach ($task['tags'] as $tag): ?>
             <li class="task-tag <?= $tag['color_id'] ? "color-{$tag['color_id']}" : '' ?>"><?= $this->text->e($tag['name']) ?></li>
@@ -31,15 +31,15 @@
     </div>
 <?php endif ?>
 
-<div class="task-board-icons">
-    <div class="task-board-icons-row">
+<div class="task-board-icons kb-board-card-meta">
+    <div class="task-board-icons-row kb-board-meta-row">
         <?php if ($task['reference']): ?>
-            <span class="task-board-reference" title="<?= t('Reference') ?>">
+            <span class="task-board-reference kb-board-pill-reference" title="<?= t('Reference') ?>">
                 <span class="ui-helper-hidden-accessible"><?= t('Reference') ?> </span><?= $this->task->renderReference($task) ?>
             </span>
         <?php endif ?>
     </div>
-    <div class="task-board-icons-row">
+    <div class="task-board-icons-row kb-board-meta-row">
         <?php if ($task['is_milestone'] == 1): ?>
             <span title="<?= t('Milestone') ?>">
                 <i class="fa fa-flag flag-milestone" role="img" aria-label="<?= t('Milestone') ?>"></i>
@@ -60,7 +60,7 @@
         <?php endif ?>
 
         <?php if (! empty($task['date_due'])): ?>
-            <span class="task-date
+            <span class="task-date kb-board-pill-date
                 <?php if (time() > $task['date_due']): ?>
                      task-date-overdue
                 <?php elseif (date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
@@ -76,7 +76,7 @@
             </span>
         <?php endif ?>
     </div>
-    <div class="task-board-icons-row">
+    <div class="task-board-icons-row kb-board-meta-row">
 
         <?php if ($task['recurrence_status'] == \Kanboard\Model\TaskModel::RECURRING_STATUS_PENDING): ?>
             <?= $this->app->tooltipLink('<i class="fa fa-refresh fa-rotate-90"></i>', $this->url->href('BoardTooltipController', 'recurrence', array('task_id' => $task['id']))) ?>
@@ -124,12 +124,12 @@
         <?php endif ?>
 
         <?php if ($task['is_active'] == 1): ?>
-            <div class="task-icon-age">
+            <div class="task-icon-age kb-board-age">
                 <span title="<?= t('Task age in days')?>" class="task-icon-age-total"><span class="ui-helper-hidden-accessible"><?= t('Task age in days') ?> </span><?= $this->dt->age($task['date_creation']) ?></span>
                 <span title="<?= t('Days in this column')?>" class="task-icon-age-column"><span class="ui-helper-hidden-accessible"><?= t('Days in this column') ?> </span><?= $this->dt->age($task['date_moved']) ?></span>
             </div>
         <?php else: ?>
-            <span class="task-board-closed"><i class="fa fa-ban fa-fw"></i><?= t('Closed') ?></span>
+            <span class="task-board-closed kb-board-pill-closed"><i class="fa fa-ban fa-fw"></i><?= t('Closed') ?></span>
         <?php endif ?>
 
         <?= $this->task->renderPriority($task['priority']) ?>

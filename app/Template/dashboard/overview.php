@@ -17,16 +17,16 @@ if (! empty($overview_paginator)) {
 
 <style>
 .kb-overview-page {
-    --kb-primary: #0011ff;
-    --kb-primary-dark: #000ba6;
+    --kb-primary: #3b82f6;
+    --kb-primary-dark: #1d4ed8;
     --kb-primary-soft: #eaf0ff;
     --kb-primary-soft-2: #f3f7ff;
 
-    --kb-accent-indigo: #0011ff;
+    --kb-accent-indigo: #2563eb;
     --kb-accent-violet: #1d4ed8;
-    --kb-accent-fuchsia: #2563eb;
-    --kb-accent-sky: #3b82f6;
-    --kb-accent-emerald: #0ea5e9;
+    --kb-accent-fuchsia: #3b82f6;
+    --kb-accent-sky: #60a5fa;
+    --kb-accent-emerald: #38bdf8;
 
     --kb-border: #dce6ff;
     --kb-border-strong: #c4d5ff;
@@ -38,10 +38,10 @@ if (! empty($overview_paginator)) {
     --kb-text-muted: #64748b;
     --kb-success: #16a34a;
 
-    --kb-gradient-primary: linear-gradient(90deg, rgba(0, 11, 166, 1) 0%, rgba(0, 17, 255, 1) 100%);
+    --kb-gradient-primary: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
     --kb-gradient-soft: linear-gradient(180deg, #ffffff 0%, #f6f9ff 52%, #eef4ff 100%);
     --kb-gradient-chip: linear-gradient(135deg, rgba(0, 11, 166, 0.10) 0%, rgba(0, 17, 255, 0.14) 100%);
-    --kb-gradient-line: linear-gradient(180deg, #000ba6 0%, #0011ff 100%);
+    --kb-gradient-line: linear-gradient(180deg, #1d4ed8 0%, #60a5fa 100%);
     --kb-gradient-metric-1: linear-gradient(135deg, rgba(0, 11, 166, 0.10) 0%, rgba(29, 78, 216, 0.06) 100%);
     --kb-gradient-metric-2: linear-gradient(135deg, rgba(0, 17, 255, 0.10) 0%, rgba(59, 130, 246, 0.06) 100%);
     --kb-gradient-pill: linear-gradient(135deg, #f4f8ff 0%, #edf4ff 100%);
@@ -57,6 +57,10 @@ if (! empty($overview_paginator)) {
     --kb-radius-md: 14px;
     --kb-radius-pill: 999px;
 
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    align-self: stretch;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -315,7 +319,7 @@ if (! empty($overview_paginator)) {
 
 .kb-overview-page .kb-section-overline {
     margin: 0 0 6px;
-    background: linear-gradient(90deg, rgba(0, 11, 166, 1) 0%, rgba(0, 17, 255, 1) 100%);
+    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -640,6 +644,246 @@ if (! empty($overview_paginator)) {
     z-index: 2;
 }
 
+
+
+/* Overview width + toolbar alignment */
+.kb-overview-page,
+.kb-overview-page.kb-page-shell {
+    width: 100%;
+    max-width: 100%;
+}
+
+.kb-overview-page .kb-card > .kb-header-card > * {
+    width: 100%;
+    max-width: 100%;
+}
+
+.kb-overview-page .kb-header-card .table-list-header,
+.kb-overview-page .kb-header-card .task-board-header,
+.kb-overview-page .kb-header-card .project-list-header,
+.kb-overview-page .kb-header-card .task-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 16px;
+    flex-wrap: wrap;
+}
+
+.kb-overview-page .kb-header-card .table-list-header > *,
+.kb-overview-page .kb-header-card .task-board-header > *,
+.kb-overview-page .kb-header-card .project-list-header > *,
+.kb-overview-page .kb-header-card .task-list-header > * {
+    min-width: 0;
+}
+
+/* Modern dropdown trigger */
+.kb-overview-page .project-dropdown,
+.kb-overview-page .dropdown {
+    position: relative;
+    z-index: 5;
+}
+
+.kb-overview-page .project-dropdown > a,
+.kb-overview-page .dropdown > a,
+.kb-overview-page .project-dropdown .dropdown-menu-link-icon,
+.kb-overview-page .dropdown .dropdown-menu-link-icon,
+.kb-overview-page .kb-header-card .dropdown > a,
+.kb-overview-page .kb-header-card .dropdown .dropdown-menu-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid #d8e3ff;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #334155;
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.kb-overview-page .project-dropdown > a:hover,
+.kb-overview-page .dropdown > a:hover,
+.kb-overview-page .project-dropdown .dropdown-menu-link-icon:hover,
+.kb-overview-page .dropdown .dropdown-menu-link-icon:hover,
+.kb-overview-page .project-dropdown.open > a,
+.kb-overview-page .dropdown.open > a,
+.kb-overview-page .project-dropdown .dropdown-menu-link-icon:focus,
+.kb-overview-page .dropdown .dropdown-menu-link-icon:focus {
+    border-color: #b8cbff;
+    background: #f8fbff;
+    color: var(--kb-primary-dark);
+    box-shadow: 0 14px 28px rgba(0, 17, 255, 0.10);
+    transform: translateY(-1px);
+}
+
+.kb-overview-page .project-dropdown > a strong,
+.kb-overview-page .dropdown > a strong,
+.kb-overview-page .project-dropdown .dropdown-menu-link-icon strong,
+.kb-overview-page .dropdown .dropdown-menu-link-icon strong {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+}
+
+.kb-overview-page .project-dropdown > a .fa-caret-down,
+.kb-overview-page .dropdown > a .fa-caret-down,
+.kb-overview-page .project-dropdown .dropdown-menu-link-icon .fa-caret-down,
+.kb-overview-page .dropdown .dropdown-menu-link-icon .fa-caret-down {
+    color: #94a3b8;
+    font-size: 0.84rem;
+    transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.kb-overview-page .project-dropdown:hover > a .fa-caret-down,
+.kb-overview-page .dropdown:hover > a .fa-caret-down,
+.kb-overview-page .project-dropdown.open > a .fa-caret-down,
+.kb-overview-page .dropdown.open > a .fa-caret-down,
+.kb-overview-page .project-dropdown .dropdown-menu-link-icon:hover .fa-caret-down,
+.kb-overview-page .dropdown .dropdown-menu-link-icon:hover .fa-caret-down {
+    color: var(--kb-primary-dark);
+    transform: translateY(1px);
+}
+
+/* Modern dropdown menu */
+.kb-overview-page .project-dropdown > ul,
+.kb-overview-page .dropdown > ul,
+.kb-overview-page .project-dropdown .dropdown-menu,
+.kb-overview-page .dropdown .dropdown-menu {
+    min-width: 240px;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #dbe5ff;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 24px 44px rgba(15, 23, 42, 0.16);
+}
+
+.kb-overview-page .project-dropdown > ul li,
+.kb-overview-page .dropdown > ul li,
+.kb-overview-page .project-dropdown .dropdown-menu li,
+.kb-overview-page .dropdown .dropdown-menu li {
+    margin: 0;
+    list-style: none;
+}
+
+.kb-overview-page .project-dropdown > ul li + li,
+.kb-overview-page .dropdown > ul li + li,
+.kb-overview-page .project-dropdown .dropdown-menu li + li,
+.kb-overview-page .dropdown .dropdown-menu li + li {
+    margin-top: 4px;
+}
+
+.kb-overview-page .project-dropdown > ul a,
+.kb-overview-page .dropdown > ul a,
+.kb-overview-page .project-dropdown .dropdown-menu a,
+.kb-overview-page .dropdown .dropdown-menu a,
+.kb-overview-page .project-dropdown > ul .dropdown-menu-link-icon,
+.kb-overview-page .dropdown > ul .dropdown-menu-link-icon,
+.kb-overview-page .project-dropdown .dropdown-menu .dropdown-menu-link-icon,
+.kb-overview-page .dropdown .dropdown-menu .dropdown-menu-link-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: #334155;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.35;
+    box-shadow: none;
+}
+
+.kb-overview-page .project-dropdown > ul a:hover,
+.kb-overview-page .dropdown > ul a:hover,
+.kb-overview-page .project-dropdown .dropdown-menu a:hover,
+.kb-overview-page .dropdown .dropdown-menu a:hover,
+.kb-overview-page .project-dropdown > ul .dropdown-menu-link-icon:hover,
+.kb-overview-page .dropdown > ul .dropdown-menu-link-icon:hover,
+.kb-overview-page .project-dropdown .dropdown-menu .dropdown-menu-link-icon:hover,
+.kb-overview-page .dropdown .dropdown-menu .dropdown-menu-link-icon:hover {
+    border-color: transparent;
+    background: #000ba6;
+    background: linear-gradient(90deg, rgba(0, 11, 166, 1) 0%, rgba(0, 17, 255, 1) 100%);
+    color: #ffffff;
+    box-shadow: 0 14px 28px rgba(0, 17, 255, 0.18);
+    transform: none;
+}
+
+.kb-overview-page .project-dropdown > ul .fa,
+.kb-overview-page .dropdown > ul .fa,
+.kb-overview-page .project-dropdown .dropdown-menu .fa,
+.kb-overview-page .dropdown .dropdown-menu .fa {
+    width: 16px;
+    text-align: center;
+    color: #64748b;
+}
+
+.kb-overview-page .project-dropdown > ul a:hover .fa,
+.kb-overview-page .dropdown > ul a:hover .fa,
+.kb-overview-page .project-dropdown .dropdown-menu a:hover .fa,
+.kb-overview-page .dropdown .dropdown-menu a:hover .fa {
+    color: #ffffff;
+}
+
+/* Make project row top section easier to scan */
+.kb-overview-page .kb-project-top {
+    gap: 12px;
+}
+
+.kb-overview-page .kb-project-title {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+}
+
+.kb-overview-page .kb-project-main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.kb-overview-page .kb-project-layout {
+    align-items: center;
+}
+
+/* Assigned tasks cards cleaner */
+.kb-overview-page .kb-task-content {
+    grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.95fr);
+    gap: 20px;
+}
+
+.kb-overview-page .kb-task-side {
+    align-self: stretch;
+    gap: 10px;
+}
+
+.kb-overview-page .kb-task-side > * {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+.kb-overview-page .kb-task-row .task-title,
+.kb-overview-page .kb-task-row .task-title a {
+    font-size: 1rem;
+}
+
+@media (max-width: 1199.98px) {
+    .kb-overview-page .kb-task-content {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+
 @media (max-width: 991.98px) {
     .kb-overview-page .kb-page-head,
     .kb-overview-page .kb-project-layout,
@@ -650,6 +894,20 @@ if (! empty($overview_paginator)) {
 
     .kb-overview-page .kb-column-grid {
         justify-content: flex-start;
+    }
+
+    .kb-overview-page .kb-header-card .table-list-header,
+    .kb-overview-page .kb-header-card .task-board-header,
+    .kb-overview-page .kb-header-card .project-list-header,
+    .kb-overview-page .kb-header-card .task-list-header {
+        align-items: flex-start;
+    }
+
+    .kb-overview-page .project-dropdown > ul,
+    .kb-overview-page .dropdown > ul,
+    .kb-overview-page .project-dropdown .dropdown-menu,
+    .kb-overview-page .dropdown .dropdown-menu {
+        min-width: min(280px, calc(100vw - 48px));
     }
 }
 

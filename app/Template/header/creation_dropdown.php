@@ -5,11 +5,11 @@
     <div class="dropdown header-creation-menu kb-header-menu kb-header-create-menu">
         <a href="#" class="dropdown-menu dropdown-menu-link-icon kb-header-action-trigger kb-header-plus-trigger" aria-label="<?= t('Create new') ?>">
             <i class="fa fa-plus fa-fw"></i>
-            <span><?= t('New') ?></span>
+            <span><?= t('Create') ?></span>
             <i class="fa fa-caret-down kb-header-caret"></i>
         </a>
 
-        <ul>
+        <ul class="kb-header-menu-list">
             <?php if ($has_project_creation_access): ?>
                 <li>
                     <?= $this->modal->medium('plus', t('New project'), 'ProjectCreationController', 'create') ?>

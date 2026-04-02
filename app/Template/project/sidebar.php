@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar kb-project-sidebar-card">
     <ul>
         <li <?= $this->app->checkMenuSelection('ProjectViewController', 'show') ?>>
             <?= $this->url->link(t('Summary'), 'ProjectViewController', 'show', array('project_id' => $project['id'])) ?>

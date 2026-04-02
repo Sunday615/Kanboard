@@ -1,5 +1,6 @@
 <div class="
         task-board
+        kb-board-card
         <?= $task['is_draggable'] ? 'draggable-item ' : '' ?>
         <?= $task['is_active'] == 1 ? 'task-board-status-open '.($task['date_modification'] > (time() - $board_highlight_period) ? 'task-board-recent' : '') : 'task-board-status-closed' ?>
         color-<?= $task['color_id'] ?>"
@@ -15,7 +16,7 @@
     <div class="task-board-sort-handle" style="display: none;"><i class="fa fa-arrows-alt"></i></div>
 
     <?php if ($this->board->isCollapsed($task['project_id'])): ?>
-        <div class="task-board-collapsed">
+        <div class="task-board-collapsed kb-board-card-collapsed">
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse"></i></div>
             <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
                 <?= $this->render('task/dropdown', array('task' => $task, 'redirect' => 'board')) ?>
@@ -34,9 +35,9 @@
             <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id']), false, '', $this->text->e($task['title'])) ?>
         </div>
     <?php else: ?>
-        <div class="task-board-expanded">
+        <div class="task-board-expanded kb-board-card-expanded">
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse fa-2x"></i></div>
-            <div class="task-board-header">
+            <div class="task-board-header kb-board-card-header">
                 <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
                     <?= $this->render('task/dropdown', array('task' => $task, 'redirect' => 'board')) ?>
                     <?php if ($this->projectRole->canUpdateTask($task)): ?>
@@ -47,7 +48,7 @@
                 <?php endif ?>
 
                 <?php if (! empty($task['owner_id'])): ?>
-                    <span class="task-board-assignee">
+                    <span class="task-board-assignee kb-board-card-assignee">
                         <?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>
                     </span>
                 <?php endif ?>
@@ -56,7 +57,7 @@
             </div>
 
             <?= $this->hook->render('template:board:private:task:before-title', array('task' => $task)) ?>
-            <div class="task-board-title">
+            <div class="task-board-title kb-board-card-title">
                 <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'])) ?>
             </div>
             <?= $this->hook->render('template:board:private:task:after-title', array('task' => $task)) ?>

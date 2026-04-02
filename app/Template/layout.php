@@ -21,6 +21,7 @@
             <?= $this->asset->css('assets/css/light.min.css') ?>
         <?php endif ?>
         <?= $this->asset->css('assets/css/print.min.css', true, 'print') ?>
+        <?= $this->asset->css('assets/css/modern-clean.css') ?>
         <?= $this->asset->customCss() ?>
 
         <?php if (! isset($not_editable)): ?>
@@ -50,7 +51,7 @@
 
         <?= $this->hook->render('template:layout:head') ?>
     </head>
-    <body data-status-url="<?= $this->url->href('UserAjaxController', 'status') ?>"
+    <body class="kb-modern-ui" data-status-url="<?= $this->url->href('UserAjaxController', 'status') ?>"
           data-login-url="<?= $this->url->href('AuthController', 'login') ?>"
           data-keyboard-shortcut-url="<?= $this->url->href('DocumentationController', 'shortcuts') ?>"
           data-timezone="<?= $this->app->getTimezone() ?>"
@@ -69,7 +70,7 @@
             'board_selector' => isset($board_selector) ? $board_selector : array(),
             'project' => isset($project) ? $project : array(),
         )) ?>
-        <section class="page">
+        <section class="page kb-modern-page">
             <?= $this->app->flashMessage() ?>
             <?= $content_for_layout ?>
         </section>

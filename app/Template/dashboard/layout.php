@@ -1,7 +1,4 @@
 <section id="main" class="kb-app-shell">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <style>
     .kb-app-shell {
         --kb-bg: #f6f7fb;
@@ -12,10 +9,10 @@
         --kb-text: #161c2d;
         --kb-text-soft: #667085;
         --kb-text-muted: #98a2b3;
-        --kb-primary: #625bff;
-        --kb-primary-dark: #4f46e5;
-        --kb-primary-soft: #f1efff;
-        --kb-accent: #8b5cf6;
+        --kb-primary: #2563eb;
+        --kb-primary-dark: #1d4ed8;
+        --kb-primary-soft: #eff6ff;
+        --kb-accent: #60a5fa;
         --kb-success: #12b76a;
         --kb-danger: #f04438;
         --kb-warning: #f59e0b;
@@ -29,7 +26,7 @@
         --kb-sidebar-width: 272px;
 
         min-height: 100vh;
-        background: linear-gradient(180deg, #fbfcff 0%, #f6f7fb 100%);
+        background: linear-gradient(180deg, #fbfdff 0%, #f4f8ff 100%);
         color: var(--kb-text);
     }
 
@@ -69,9 +66,11 @@
 
     .kb-main-panel {
         min-width: 0;
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 20px;
+        align-items: stretch;
     }
 
     .kb-topbar {
@@ -161,6 +160,15 @@
 
     .kb-content-panel {
         min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 auto;
+        align-self: stretch;
+    }
+
+    .kb-content-panel > * {
+        width: 100%;
+        max-width: 100%;
     }
 
     .kb-content-panel > *:first-child {
@@ -194,11 +202,11 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #6d63ff 0%, #4f46e5 100%);
+        background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
         color: #ffffff;
         font-size: 1rem;
         font-weight: 800;
-        box-shadow: 0 10px 20px rgba(98, 91, 255, 0.28);
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.24);
     }
 
     .kb-sidebar-brand-copy strong {
@@ -266,8 +274,8 @@
 
     .kb-sidebar ul li a:hover {
         color: var(--kb-primary-dark);
-        background: #f8f7ff;
-        border-color: #ecebff;
+        background: #f7fbff;
+        border-color: #dbeafe;
     }
 
     .kb-sidebar ul li.active::before,
@@ -282,9 +290,9 @@
     .kb-sidebar ul li.selected a,
     .kb-sidebar ul li[aria-current="page"] a {
         color: var(--kb-primary-dark);
-        background: linear-gradient(135deg, #f4f3ff 0%, #eeefff 100%);
-        border-color: #dbddff;
-        box-shadow: 0 10px 22px rgba(98, 91, 255, 0.10);
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        border-color: #bfdbfe;
+        box-shadow: 0 10px 22px rgba(37, 99, 235, 0.10);
     }
 
     .kb-sidebar-footer {
@@ -428,9 +436,9 @@
         overflow: hidden;
         padding: 22px 24px;
         border-radius: 22px;
-        background: linear-gradient(135deg, #6d63ff 0%, #625bff 45%, #8b5cf6 100%);
+        background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 48%, #60a5fa 100%);
         color: #ffffff;
-        box-shadow: 0 24px 44px rgba(98, 91, 255, 0.26);
+        box-shadow: 0 24px 44px rgba(37, 99, 235, 0.24);
     }
 
     .kb-banner::after {
@@ -501,7 +509,7 @@
     }
 
     .kb-banner-btn:hover {
-        color: #4338ca;
+        color: #1d4ed8;
         transform: translateY(-1px);
     }
 
@@ -557,7 +565,7 @@
     .kb-table-card .table-list-row:hover,
     .kb-list-row:hover {
         border-color: #d9dcff;
-        box-shadow: 0 16px 28px rgba(98, 91, 255, 0.08);
+        box-shadow: 0 16px 28px rgba(37, 99, 235, 0.08);
         transform: translateY(-1px);
     }
 
@@ -576,7 +584,7 @@
         bottom: 14px;
         width: 4px;
         border-radius: 999px;
-        background: linear-gradient(180deg, #6d63ff 0%, #8b5cf6 100%);
+        background: linear-gradient(180deg, #2563eb 0%, #60a5fa 100%);
     }
 
     .kb-empty-state {
@@ -596,10 +604,10 @@
         align-items: center;
         justify-content: center;
         border-radius: 20px;
-        background: linear-gradient(135deg, #f0eeff 0%, #ece9ff 100%);
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
         color: var(--kb-primary-dark);
         font-size: 1.3rem;
-        box-shadow: 0 10px 20px rgba(98, 91, 255, 0.10);
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.10);
     }
 
     .kb-empty-state h3,
@@ -651,27 +659,27 @@
     .kb-app-shell .kb-pagination a:hover {
         color: var(--kb-primary-dark);
         border-color: #cfd5ff;
-        background: #f8f7ff;
+        background: #f7fbff;
     }
 
     .kb-app-shell .pagination .active,
     .kb-app-shell .pagination .current,
     .kb-app-shell .kb-pagination .active,
     .kb-app-shell .kb-pagination .current {
-        background: linear-gradient(135deg, #6d63ff 0%, #5b54ff 100%);
-        border-color: #6d63ff;
+        background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+        border-color: #1d4ed8;
         color: #ffffff;
-        box-shadow: 0 12px 22px rgba(98, 91, 255, 0.20);
+        box-shadow: 0 12px 22px rgba(37, 99, 235, 0.20);
     }
 
     .kb-app-shell .alert {
         margin: 0;
         padding: 16px 18px;
-        border: 1px solid #ece9ff;
+        border: 1px solid #dbeafe;
         border-radius: 16px;
-        background: #faf9ff;
+        background: #f8fbff;
         color: var(--kb-text-soft);
-        box-shadow: 0 8px 18px rgba(98, 91, 255, 0.04);
+        box-shadow: 0 8px 18px rgba(37, 99, 235, 0.05);
     }
 
     .kb-app-shell .dropdown > a,
@@ -694,7 +702,7 @@
     .kb-app-shell .dropdown-menu-link-icon:hover {
         color: var(--kb-primary-dark);
         border-color: #cfd5ff;
-        background: #f8f7ff;
+        background: #f7fbff;
     }
 
     .kb-app-shell .table-list a,
@@ -739,6 +747,22 @@
     .kb-app-shell .table-list-row .task-icons:empty,
     .kb-app-shell .table-list-row .task-list-details:empty {
         display: none;
+    }
+
+
+    .kb-stretch-content,
+    .kb-stretch-content > .kb-page-shell,
+    .kb-stretch-content > .kb-overview-page {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        align-self: stretch;
+    }
+
+    .kb-stretch-content > .kb-page-shell,
+    .kb-stretch-content > .kb-overview-page {
+        margin-left: 0;
+        margin-right: 0;
     }
 
     @media (max-width: 1199.98px) {
@@ -836,7 +860,7 @@
                 </ul>
             </div>
 
-            <div class="sidebar-content kb-content-panel">
+            <div class="sidebar-content kb-content-panel kb-stretch-content">
                 <?= $content_for_sublayout ?>
             </div>
         </section>

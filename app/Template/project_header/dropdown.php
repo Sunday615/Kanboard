@@ -1,5 +1,9 @@
-<div class="dropdown">
-    <a href="#" class="dropdown-menu action-menu" title="<?= t('Configure this project') ?>" aria-label="<?= t('Configure this project') ?>"><i class="fa fa-cog"></i><i class="fa fa-caret-down"></i></a>
+<div class="dropdown kb-project-action-dropdown">
+    <a href="#" class="dropdown-menu action-menu kb-project-action-trigger" title="<?= t('Configure this project') ?>" aria-label="<?= t('Configure this project') ?>">
+        <i class="fa fa-cog"></i>
+        <span><?= t('Actions') ?></span>
+        <i class="fa fa-caret-down"></i>
+    </a>
     <ul>
         <?php if ($board_view): ?>
         <li>
@@ -81,3 +85,43 @@
         </li>
     </ul>
 </div>
+
+<?php static $kbProjectActionDropdownModernLoaded = false; ?>
+<?php if (! $kbProjectActionDropdownModernLoaded): ?>
+    <?php $kbProjectActionDropdownModernLoaded = true; ?>
+    <style>
+        .kb-project-action-dropdown {
+            position: relative;
+        }
+
+        .kb-project-action-trigger {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 46px;
+            padding: 0 16px;
+            border-radius: 16px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            box-shadow: 0 14px 30px rgba(0, 17, 255, 0.18);
+            font-weight: 700;
+        }
+
+        .kb-project-action-trigger:hover {
+            color: #ffffff;
+            opacity: 0.98;
+            transform: translateY(-1px);
+        }
+
+        .kb-project-action-trigger:hover * {
+            color: inherit !important;
+        }
+
+        .kb-project-action-trigger > span {
+            color: inherit;
+            font-size: 14px;
+            font-weight: 700;
+        }
+    </style>
+<?php endif; ?>
