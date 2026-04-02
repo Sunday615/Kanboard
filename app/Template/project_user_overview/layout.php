@@ -1,5 +1,7 @@
-<section id="main">
-    <div class="page-header">
+<?= $this->render('app/modern_admin_styles') ?>
+
+<section id="main" class="kb-project-user-overview-page">
+    <div class="page-header kb-admin-page-header">
         <ul>
             <?php if ($this->user->hasAccess('ProjectCreationController', 'create')): ?>
                 <li>

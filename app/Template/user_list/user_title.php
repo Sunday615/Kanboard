@@ -1,6 +1,8 @@
-<div>
-    <?= $this->render('user_list/dropdown', array('user' => $user)) ?>
-    <span class="table-list-title <?= $user['is_active'] == 0 ? 'status-closed' : '' ?>">
+<div class="kb-admin-user-head">
+    <div class="kb-admin-id-pill">
+        <?= $this->render('user_list/dropdown', array('user' => $user)) ?>
+    </div>
+    <span class="table-list-title kb-admin-entity-title <?= $user['is_active'] == 0 ? 'status-closed' : '' ?>">
         <?= $this->avatar->small(
             $user['id'],
             $user['username'],

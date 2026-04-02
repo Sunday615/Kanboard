@@ -1,4 +1,4 @@
-<div class="dropdown">
+<div class="dropdown kb-admin-sort">
     <a href="#" class="dropdown-menu dropdown-menu-link-icon"><strong><?= t('Sort') ?> <i class="fa fa-caret-down"></i></strong></a>
     <ul>
         <li>

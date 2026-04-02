@@ -1,4 +1,4 @@
-<div class="table-list-icons">
+<div class="table-list-icons kb-admin-icon-row">
     <?php if ($user['notifications_enabled'] == 1): ?>
         <span title="<?= t('Notifications are activated') ?>">
             <i class="fa fa-bell-o" role="img" aria-label="<?= t('Notifications are activated') ?>"></i>

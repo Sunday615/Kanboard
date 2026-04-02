@@ -1,5 +1,5 @@
-<div class="table-list-details table-list-details-with-icons">
-    <span class="table-list-category">
+<div class="table-list-details table-list-details-with-icons kb-admin-entity-details">
+    <span class="table-list-category kb-admin-role-chip">
         <?= $this->user->getRoleName($user['role']) ?>
     </span>
 
@@ -18,7 +18,7 @@
             <span title="<?= $groups_list_tooltip ?>" role="img" aria-label="<?= $groups_list_tooltip ?>">
                 <i class="fa fa-fw fa-group" aria-hidden="true"></i><?= $this->text->implode(', ', $users_groups['limited_list']) ?>
                 <?php if ($users_groups['shown'] != $users_groups['total']): ?>
-                    ‑&nbsp;<?= t('%d/%d group(s) shown', $users_groups['shown'], $users_groups['total']) ?>
+                    - <?= t('%d/%d group(s) shown', $users_groups['shown'], $users_groups['total']) ?>
                 <?php endif ?>
             </span>
         <?php endif ?>
