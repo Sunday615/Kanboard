@@ -40,14 +40,14 @@
         .kb-project-toolbar-modern {
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            padding: 24px 26px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            border-radius: 30px;
+            gap: 22px;
+            padding: 22px 24px 26px;
+            margin-bottom: 22px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 32px;
             background:
-                linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 250, 255, 0.98) 100%);
-            box-shadow: 0 22px 54px rgba(15, 23, 42, 0.08);
+                linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 251, 255, 0.98) 100%);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
             position: relative;
             overflow: hidden;
         }
@@ -56,8 +56,8 @@
             content: "";
             position: absolute;
             inset: 0 0 auto 0;
-            height: 4px;
-            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            height: 3px;
+            background: linear-gradient(135deg, #4c6fff 0%, #597bf8 100%);
         }
 
         .kb-project-toolbar-top,
@@ -78,13 +78,13 @@
             min-height: 30px;
             padding: 0 12px;
             border-radius: 999px;
-            font-size: 12px;
-            font-weight: 700;
+            font-size: 11px;
+            font-weight: 800;
             letter-spacing: 0.03em;
             text-transform: uppercase;
-            color: #1e40af;
-            background: rgba(0, 17, 255, 0.08);
-            margin-bottom: 10px;
+            color: #4c6fff;
+            background: rgba(76, 111, 255, 0.10);
+            margin-bottom: 12px;
         }
 
         .kb-project-toolbar-heading-row {
@@ -96,10 +96,11 @@
 
         .kb-project-toolbar-heading-row h1 {
             margin: 0;
-            color: #0f172a;
-            font-size: clamp(1.45rem, 2vw, 1.95rem);
+            color: #162033;
+            font-size: clamp(1.75rem, 2.4vw, 2.35rem);
             font-weight: 800;
-            line-height: 1.1;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
         }
 
         .kb-project-toolbar-id {
@@ -111,8 +112,8 @@
             font-size: 13px;
             font-weight: 700;
             color: #ffffff;
-            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
-            box-shadow: 0 12px 26px rgba(0, 17, 255, 0.16);
+            background: linear-gradient(135deg, #4c6fff 0%, #597bf8 100%);
+            box-shadow: 0 10px 24px rgba(76, 111, 255, 0.18);
         }
 
         .kb-project-toolbar-actions {
@@ -125,7 +126,7 @@
         }
 
         .kb-project-toolbar-search {
-            min-width: 320px;
+            min-width: 360px;
             flex: 1 1 auto;
         }
 
@@ -143,8 +144,8 @@
 
         @media (max-width: 640px) {
             .kb-project-toolbar-modern {
-                padding: 20px 18px;
-                border-radius: 22px;
+                padding: 18px 18px 20px;
+                border-radius: 24px;
             }
         }
     </style>

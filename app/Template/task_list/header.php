@@ -1,5 +1,5 @@
-<div class="table-list-header">
-    <div class="table-list-header-count">
+<div class="table-list-header kb-task-list-toolbar-row">
+    <div class="table-list-header-count kb-task-list-count">
         <?php if ($paginator->getTotal() > 1): ?>
             <?= t('%d tasks', $paginator->getTotal()) ?>
         <?php else: ?>
@@ -8,11 +8,10 @@
     </div>
     <?php if (isset($show_items_selection)): ?>
         <?php if ($this->user->hasProjectAccess('TaskModificationController', 'save', $project['id'])): ?>
-            <div class="list-item-links">
+            <div class="list-item-links kb-task-list-selection-links">
                 <a href="#" data-list-item-selection="all"><?= t('Select All') ?></a> / <a href="#" data-list-item-selection="none"><?= t('Unselect All') ?></a>
             </div>
-            <div class="list-item-actions list-item-action-hidden">
-                -&nbsp;
+            <div class="list-item-actions list-item-action-hidden kb-task-list-bulk-actions">
                 <div class="dropdown">
                     <a href="#" class="dropdown-menu dropdown-menu-link-icon"><strong><?= t('Apply action') ?> <i class="fa fa-caret-down"></i></strong></a>
                     <ul>
@@ -27,7 +26,7 @@
             </div>
         <?php endif ?>
     <?php endif ?>
-    <div class="table-list-header-menu">
+    <div class="table-list-header-menu kb-task-list-toolbar-actions">
         <?php if (isset($project)): ?>
             <?php if ($this->user->hasSubtaskListActivated()): ?>
                 <?= $this->url->icon('tasks', t('Hide subtasks'), 'TaskListController', 'show', array('project_id' => $project['id'], 'hide_subtasks' => 1, 'csrf_token' => $this->app->getToken()->getReusableCSRFToken())) ?>

@@ -28,14 +28,14 @@
             display: inline-flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
             list-style: none;
             margin: 0;
-            padding: 8px;
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+            padding: 6px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 251, 255, 0.98) 100%);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
         }
 
         .kb-project-views-modern > li {
@@ -49,16 +49,18 @@
             justify-content: center;
             gap: 8px;
             min-height: 42px;
-            padding: 0 14px;
-            border-radius: 12px;
-            color: #5b6b90;
+            padding: 0 16px;
+            border: 1px solid transparent;
+            border-radius: 14px;
+            color: #62708b;
             font-weight: 700;
             background: transparent;
         }
 
         .kb-project-views-modern > li > a:hover {
-            color: #0f172a;
-            background: rgba(0, 17, 255, 0.05);
+            color: #1f2a44;
+            border-color: rgba(148, 163, 184, 0.14);
+            background: #f6f8ff;
         }
 
         .kb-project-views-modern > li > a:hover * {
@@ -68,8 +70,9 @@
         .kb-project-views-modern > li.active > a,
         .kb-project-views-modern > li.current-menu-item > a {
             color: #ffffff;
-            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
-            box-shadow: 0 12px 24px rgba(0, 17, 255, 0.16);
+            border-color: transparent;
+            background: linear-gradient(135deg, #4c6fff 0%, #597bf8 100%);
+            box-shadow: 0 12px 24px rgba(76, 111, 255, 0.20);
         }
 
         .kb-project-views-modern > li.active > a *,

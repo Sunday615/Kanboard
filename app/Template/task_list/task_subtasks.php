@@ -1,5 +1,5 @@
 <?php if (! empty($task['subtasks'])): ?>
-<div class="task-list-subtasks">
+<div class="task-list-subtasks kb-task-list-subtasks">
     <?php foreach ($task['subtasks'] as $subtask): ?>
         <div class="task-list-subtask">
             <span class="subtask-cell column-50">

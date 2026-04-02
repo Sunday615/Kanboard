@@ -1,26 +1,26 @@
 :root {
-    --kb-modern-bg: #f5f9ff;
+    --kb-modern-bg: #f6f8fc;
     --kb-modern-surface: #ffffff;
-    --kb-modern-surface-soft: #f8fbff;
-    --kb-modern-surface-muted: #eef5ff;
-    --kb-modern-border: rgba(148, 163, 184, 0.22);
-    --kb-modern-border-strong: rgba(59, 130, 246, 0.24);
-    --kb-modern-text: #0f172a;
-    --kb-modern-text-soft: #475569;
-    --kb-modern-text-muted: #64748b;
-    --kb-modern-blue-700: #1d4ed8;
-    --kb-modern-blue-600: #2563eb;
-    --kb-modern-blue-500: #3b82f6;
-    --kb-modern-blue-400: #60a5fa;
-    --kb-modern-gradient: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
-    --kb-modern-gradient-soft: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-    --kb-modern-shadow-sm: 0 12px 28px rgba(15, 23, 42, 0.05);
-    --kb-modern-shadow-md: 0 22px 48px rgba(15, 23, 42, 0.07);
-    --kb-modern-shadow-blue: 0 18px 40px rgba(37, 99, 235, 0.16);
-    --kb-modern-radius-xl: 28px;
-    --kb-modern-radius-lg: 22px;
-    --kb-modern-radius-md: 16px;
-    --kb-modern-radius-sm: 12px;
+    --kb-modern-surface-soft: #fbfcff;
+    --kb-modern-surface-muted: #eef2ff;
+    --kb-modern-border: rgba(148, 163, 184, 0.18);
+    --kb-modern-border-strong: rgba(76, 111, 255, 0.20);
+    --kb-modern-text: #162033;
+    --kb-modern-text-soft: #52607a;
+    --kb-modern-text-muted: #71819b;
+    --kb-modern-blue-700: #4366f1;
+    --kb-modern-blue-600: #4c6fff;
+    --kb-modern-blue-500: #597bf8;
+    --kb-modern-blue-400: #7f9cff;
+    --kb-modern-gradient: linear-gradient(135deg, #4c6fff 0%, #597bf8 100%);
+    --kb-modern-gradient-soft: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+    --kb-modern-shadow-sm: 0 10px 24px rgba(15, 23, 42, 0.05);
+    --kb-modern-shadow-md: 0 18px 40px rgba(15, 23, 42, 0.06);
+    --kb-modern-shadow-blue: 0 16px 34px rgba(76, 111, 255, 0.14);
+    --kb-modern-radius-xl: 30px;
+    --kb-modern-radius-lg: 24px;
+    --kb-modern-radius-md: 18px;
+    --kb-modern-radius-sm: 14px;
 }
 
 body.kb-modern-ui {
@@ -28,9 +28,9 @@ body.kb-modern-ui {
     margin: 0;
     min-height: 100vh;
     background:
-        radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 24%),
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.05), transparent 18%),
-        linear-gradient(180deg, #fbfdff 0%, #f4f8ff 100%);
+        radial-gradient(circle at top right, rgba(76, 111, 255, 0.08), transparent 22%),
+        radial-gradient(circle at top left, rgba(76, 111, 255, 0.04), transparent 18%),
+        linear-gradient(180deg, #fcfdff 0%, #f4f6fb 100%);
     color: var(--kb-modern-text);
 }
 
@@ -62,16 +62,16 @@ body.kb-modern-ui a:focus {
 
 body.kb-modern-ui header.kb-modern-app-header {
     width: min(1480px, calc(100% - 28px));
-    margin: 18px auto 0;
-    padding: 18px 22px;
+    margin: 12px auto 0;
+    padding: 18px 20px;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(280px, 420px) auto;
     gap: 18px;
     align-items: center;
     border: 1px solid var(--kb-modern-border);
-    border-radius: 26px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(18px);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(16px);
     box-shadow: var(--kb-modern-shadow-md);
 }
 
@@ -102,7 +102,7 @@ body.kb-modern-ui .menus-container .notification {
 
 body.kb-modern-ui .page.kb-modern-page {
     width: min(1480px, calc(100% - 28px));
-    margin: 18px auto 34px;
+    margin: 18px auto 36px;
 }
 
 body.kb-modern-ui .page-header:not(.kb-topbar):not(.kb-project-toolbar-modern),
@@ -417,6 +417,35 @@ body.kb-modern-ui .select-dropdown-results {
     overscroll-behavior: contain;
     scrollbar-width: thin;
     scrollbar-color: rgba(37, 99, 235, 0.38) rgba(148, 163, 184, 0.16);
+}
+
+body.kb-modern-ui .select2-container,
+body.kb-modern-ui .select2-container--open,
+body.kb-modern-ui .select2-dropdown,
+body.kb-modern-ui .select2-close-mask {
+    z-index: 1605 !important;
+}
+
+body.kb-modern-ui .select2-results__option .color-picker-option,
+body.kb-modern-ui .select2-selection__rendered .color-picker-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.kb-modern-ui .select2-results__option .color-picker-square,
+body.kb-modern-ui .select2-selection__rendered .color-picker-square {
+    width: 14px;
+    height: 14px;
+    margin-right: 0;
+    border-radius: 4px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    flex-shrink: 0;
+}
+
+body.kb-modern-ui .select2-results__option .color-picker-label,
+body.kb-modern-ui .select2-selection__rendered .color-picker-label {
+    padding-bottom: 0;
 }
 
 body.kb-modern-ui .dropdown > ul::-webkit-scrollbar,

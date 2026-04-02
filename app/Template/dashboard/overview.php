@@ -19,8 +19,8 @@ if (! empty($overview_paginator)) {
 .kb-overview-page {
     --kb-primary: #3b82f6;
     --kb-primary-dark: #1d4ed8;
-    --kb-primary-soft: #eaf0ff;
-    --kb-primary-soft-2: #f3f7ff;
+    --kb-primary-soft: #edf4ff;
+    --kb-primary-soft-2: #f7fbff;
 
     --kb-accent-indigo: #2563eb;
     --kb-accent-violet: #1d4ed8;
@@ -28,14 +28,14 @@ if (! empty($overview_paginator)) {
     --kb-accent-sky: #60a5fa;
     --kb-accent-emerald: #38bdf8;
 
-    --kb-border: #dce6ff;
-    --kb-border-strong: #c4d5ff;
+    --kb-border: rgba(148, 163, 184, 0.20);
+    --kb-border-strong: rgba(96, 165, 250, 0.32);
     --kb-surface: #ffffff;
-    --kb-surface-muted: #f6f9ff;
+    --kb-surface-muted: #f8fbff;
     --kb-surface-soft: #fbfdff;
     --kb-text: #0f172a;
-    --kb-text-soft: #475569;
-    --kb-text-muted: #64748b;
+    --kb-text-soft: #526277;
+    --kb-text-muted: #70839a;
     --kb-success: #16a34a;
 
     --kb-gradient-primary: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
@@ -46,11 +46,11 @@ if (! empty($overview_paginator)) {
     --kb-gradient-metric-2: linear-gradient(135deg, rgba(0, 17, 255, 0.10) 0%, rgba(59, 130, 246, 0.06) 100%);
     --kb-gradient-pill: linear-gradient(135deg, #f4f8ff 0%, #edf4ff 100%);
 
-    --kb-shadow-xs: 0 4px 12px rgba(15, 23, 42, 0.04);
-    --kb-shadow-sm: 0 10px 24px rgba(15, 23, 42, 0.06);
-    --kb-shadow-md: 0 18px 42px rgba(15, 23, 42, 0.08);
-    --kb-shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.10);
-    --kb-shadow-purple: 0 18px 36px rgba(0, 17, 255, 0.14);
+    --kb-shadow-xs: 0 6px 14px rgba(15, 23, 42, 0.04);
+    --kb-shadow-sm: 0 12px 28px rgba(15, 23, 42, 0.05);
+    --kb-shadow-md: 0 18px 40px rgba(15, 23, 42, 0.07);
+    --kb-shadow-lg: 0 24px 56px rgba(15, 23, 42, 0.09);
+    --kb-shadow-purple: 0 16px 30px rgba(0, 17, 255, 0.10);
 
     --kb-radius-xl: 24px;
     --kb-radius-lg: 18px;
@@ -109,18 +109,18 @@ if (! empty($overview_paginator)) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 42px;
-    padding: 0 16px;
+    min-height: 40px;
+    padding: 0 15px;
     border: 1px solid rgba(0, 17, 255, 0.14);
     border-radius: var(--kb-radius-pill);
     background:
-        var(--kb-gradient-chip),
-        linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+        linear-gradient(135deg, rgba(0, 11, 166, 0.08) 0%, rgba(0, 17, 255, 0.10) 100%),
+        linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
     color: var(--kb-primary-dark);
     font-size: 0.84rem;
     font-weight: 800;
     white-space: nowrap;
-    box-shadow: var(--kb-shadow-sm);
+    box-shadow: 0 10px 22px rgba(0, 17, 255, 0.08);
 }
 
 .kb-overview-page .kb-summary-grid {
@@ -132,8 +132,9 @@ if (! empty($overview_paginator)) {
 .kb-overview-page .kb-metric-card {
     position: relative;
     overflow: hidden;
-    padding: 20px 20px 18px;
+    padding: 18px 18px 16px;
     border: 1px solid var(--kb-border);
+    border-left: 6px solid #4f72f5;
     border-radius: 20px;
     background: var(--kb-gradient-soft);
     box-shadow: var(--kb-shadow-sm);
@@ -152,20 +153,16 @@ if (! empty($overview_paginator)) {
 }
 
 .kb-overview-page .kb-metric-card::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 5px;
-    background: var(--kb-gradient-line);
+    display: none;
 }
 
 .kb-overview-page .kb-metric-card::after {
     content: "";
     position: absolute;
-    right: -40px;
-    top: -40px;
-    width: 140px;
-    height: 140px;
+    right: -34px;
+    top: -34px;
+    width: 126px;
+    height: 126px;
     border-radius: 999px;
     background: radial-gradient(circle, rgba(0, 17, 255, 0.10) 0%, rgba(0, 17, 255, 0) 72%);
     pointer-events: none;
@@ -186,15 +183,15 @@ if (! empty($overview_paginator)) {
 }
 
 .kb-overview-page .kb-metric-bullet {
-    width: 11px;
-    height: 11px;
+    width: 10px;
+    height: 10px;
     border-radius: 999px;
     background: var(--kb-gradient-primary);
-    box-shadow: 0 0 0 7px rgba(0, 17, 255, 0.10);
+    box-shadow: 0 0 0 6px rgba(0, 17, 255, 0.08);
 }
 
 .kb-overview-page .kb-metric-value {
-    margin-top: 16px;
+    margin-top: 14px;
     color: var(--kb-text);
     font-size: clamp(1.9rem, 2.2vw, 2.3rem);
     line-height: 1;
@@ -203,10 +200,10 @@ if (! empty($overview_paginator)) {
 }
 
 .kb-overview-page .kb-metric-note {
-    margin-top: 10px;
+    margin-top: 8px;
     color: var(--kb-text-soft);
-    font-size: 0.86rem;
-    font-weight: 700;
+    font-size: 0.83rem;
+    font-weight: 800;
 }
 
 .kb-overview-page .kb-card {
@@ -217,11 +214,11 @@ if (! empty($overview_paginator)) {
 }
 
 .kb-overview-page .kb-card-body {
-    padding: 20px 22px;
+    padding: 18px 20px;
 }
 
 .kb-overview-page .kb-header-card {
-    padding: 18px 22px;
+    padding: 16px 20px;
     background: var(--kb-gradient-soft);
 }
 
@@ -232,7 +229,7 @@ if (! empty($overview_paginator)) {
 
 .kb-overview-page .kb-search-shell {
     border: 1px solid var(--kb-border);
-    border-radius: 20px;
+    border-radius: 22px;
     background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.95),
@@ -257,15 +254,15 @@ if (! empty($overview_paginator)) {
 .kb-overview-page .kb-search-row {
     display: flex;
     align-items: center;
-    min-height: 66px;
+    min-height: 62px;
 }
 
 .kb-overview-page .kb-search-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    min-width: 56px;
+    width: 54px;
+    min-width: 54px;
     color: var(--kb-primary-dark);
     font-size: 1rem;
 }
@@ -273,7 +270,7 @@ if (! empty($overview_paginator)) {
 .kb-overview-page .kb-search-input {
     flex: 1 1 auto;
     min-width: 0;
-    height: 66px;
+    height: 62px;
     border: 0;
     outline: 0;
     background: transparent;
@@ -293,8 +290,9 @@ if (! empty($overview_paginator)) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 66px;
-    padding: 0 16px 0 10px;
+    min-height: 62px;
+    gap: 10px;
+    padding: 0 14px 0 10px;
     border-left: 1px solid #edf2ff;
     color: var(--kb-text-soft);
 }
@@ -350,19 +348,19 @@ if (! empty($overview_paginator)) {
 .kb-overview-page .kb-section-subtitle {
     margin: 8px 0 0;
     color: var(--kb-text-soft);
-    font-size: 0.93rem;
+    font-size: 0.9rem;
     line-height: 1.7;
 }
 
 .kb-overview-page .kb-list-stack.table-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
     background: transparent;
     border: 0;
     box-shadow: none;
     margin-bottom: 0;
-    padding: 18px;
+    padding: 16px;
 }
 
 .kb-overview-page .table-list-row {
@@ -370,7 +368,7 @@ if (! empty($overview_paginator)) {
     overflow: hidden;
     border: 1px solid var(--kb-border);
     border-left: 0 !important;
-    border-radius: 20px;
+    border-radius: 22px;
     background: linear-gradient(180deg, #ffffff 0%, #fcfdff 100%);
     box-shadow: var(--kb-shadow-sm);
     transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
@@ -387,12 +385,28 @@ if (! empty($overview_paginator)) {
 .kb-overview-page .table-list-row:hover {
     transform: translateY(-2px);
     border-color: rgba(0, 17, 255, 0.18);
-    box-shadow: 0 18px 34px rgba(0, 17, 255, 0.10);
+    box-shadow: 0 16px 30px rgba(0, 17, 255, 0.08);
+}
+
+.kb-overview-page .kb-project-row {
+    border-left: 6px solid #4f72f5 !important;
+}
+
+.kb-overview-page .kb-project-row::before {
+    display: none;
+}
+
+.kb-overview-page .kb-project-row:hover {
+    border-left-color: #3e63f3 !important;
 }
 
 .kb-overview-page .kb-project-content,
 .kb-overview-page .kb-task-content {
-    padding: 20px 20px 20px 24px;
+    padding: 18px 18px 18px 22px;
+}
+
+.kb-overview-page .kb-task-row .kb-task-content {
+    padding: 14px 16px 14px 18px;
 }
 
 .kb-overview-page .kb-project-content {
@@ -454,7 +468,7 @@ if (! empty($overview_paginator)) {
     gap: 6px;
     min-height: 32px;
     padding: 0 12px;
-    border: 1px solid rgba(0, 17, 255, 0.14);
+    border: 1px solid rgba(0, 17, 255, 0.12);
     border-radius: 999px;
     background: linear-gradient(135deg, #eef4ff 0%, #f5f9ff 100%);
     color: #1d4ed8;
@@ -473,8 +487,8 @@ if (! empty($overview_paginator)) {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    min-height: 38px;
-    padding: 0 13px;
+    min-height: 36px;
+    padding: 0 12px;
     border: 1px solid #dee8ff;
     border-radius: 999px;
     background: linear-gradient(135deg, #f7faff 0%, #edf4ff 100%);
@@ -512,23 +526,458 @@ if (! empty($overview_paginator)) {
 
 .kb-overview-page .kb-task-content {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(290px, 1fr);
+    grid-template-columns: minmax(0, 1.5fr) minmax(360px, 0.95fr);
     gap: 18px;
     align-items: start;
 }
 
+.kb-overview-page .kb-task-main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: flex-start;
+}
+
+.kb-overview-page .kb-task-main > div:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
 .kb-overview-page .kb-task-side {
     display: grid;
-    gap: 12px;
+    gap: 10px;
+}
+
+.kb-overview-page .kb-task-row {
+    --kb-task-accent: #5b84f7;
+    --kb-task-border-color: rgba(160, 194, 255, 0.46);
+    --kb-task-surface-bottom: rgba(230, 239, 255, 0.92);
+    --kb-task-shadow-color: rgba(59, 130, 246, 0.12);
+    --kb-task-hover-border-color: rgba(59, 130, 246, 0.34);
+    --kb-task-hover-shadow-color: rgba(59, 130, 246, 0.16);
+
+    border: 1px solid var(--kb-task-border-color);
+    border-left: 6px solid var(--kb-task-accent) !important;
+    background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0) 36%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, var(--kb-task-surface-bottom) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
+        0 16px 30px var(--kb-task-shadow-color);
+}
+
+.kb-overview-page .kb-task-row::before {
+    display: none;
+}
+
+.kb-overview-page .kb-task-row:hover {
+    transform: translateY(-2px);
+    border-color: var(--kb-task-hover-border-color);
+    border-left-color: var(--kb-task-accent) !important;
+    box-shadow: 0 20px 38px var(--kb-task-hover-shadow-color);
+}
+
+.kb-overview-page .kb-task-row.color-yellow {
+    --kb-task-accent: rgb(223, 227, 45);
+    --kb-task-border-color: rgba(223, 227, 45, 0.34);
+    --kb-task-surface-bottom: rgba(245, 247, 196, 0.88);
+    --kb-task-shadow-color: rgba(223, 227, 45, 0.12);
+    --kb-task-hover-border-color: rgba(223, 227, 45, 0.42);
+    --kb-task-hover-shadow-color: rgba(223, 227, 45, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-blue {
+    --kb-task-accent: rgb(98, 165, 241);
+    --kb-task-border-color: rgba(168, 207, 255, 0.46);
+    --kb-task-surface-bottom: rgba(219, 235, 255, 0.90);
+    --kb-task-shadow-color: rgba(59, 130, 246, 0.12);
+    --kb-task-hover-border-color: rgba(96, 165, 250, 0.36);
+    --kb-task-hover-shadow-color: rgba(59, 130, 246, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-green {
+    --kb-task-accent: rgb(74, 227, 113);
+    --kb-task-border-color: rgba(74, 227, 113, 0.34);
+    --kb-task-surface-bottom: rgba(203, 248, 215, 0.90);
+    --kb-task-shadow-color: rgba(34, 197, 94, 0.12);
+    --kb-task-hover-border-color: rgba(74, 222, 128, 0.38);
+    --kb-task-hover-shadow-color: rgba(34, 197, 94, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-purple {
+    --kb-task-accent: rgb(205, 133, 254);
+    --kb-task-border-color: rgba(205, 133, 254, 0.34);
+    --kb-task-surface-bottom: rgba(234, 200, 255, 0.86);
+    --kb-task-shadow-color: rgba(168, 85, 247, 0.12);
+    --kb-task-hover-border-color: rgba(192, 132, 252, 0.38);
+    --kb-task-hover-shadow-color: rgba(168, 85, 247, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-red {
+    --kb-task-accent: rgb(255, 151, 151);
+    --kb-task-border-color: rgba(255, 151, 151, 0.42);
+    --kb-task-surface-bottom: rgba(255, 209, 209, 0.88);
+    --kb-task-shadow-color: rgba(239, 68, 68, 0.12);
+    --kb-task-hover-border-color: rgba(248, 113, 113, 0.40);
+    --kb-task-hover-shadow-color: rgba(239, 68, 68, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-orange {
+    --kb-task-accent: rgb(255, 172, 98);
+    --kb-task-border-color: rgba(255, 172, 98, 0.38);
+    --kb-task-surface-bottom: rgba(255, 224, 193, 0.90);
+    --kb-task-shadow-color: rgba(249, 115, 22, 0.12);
+    --kb-task-hover-border-color: rgba(251, 146, 60, 0.38);
+    --kb-task-hover-shadow-color: rgba(249, 115, 22, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-grey {
+    --kb-task-accent: rgb(160, 174, 192);
+    --kb-task-border-color: rgba(160, 174, 192, 0.34);
+    --kb-task-surface-bottom: rgba(241, 244, 248, 0.92);
+    --kb-task-shadow-color: rgba(100, 116, 139, 0.10);
+    --kb-task-hover-border-color: rgba(148, 163, 184, 0.36);
+    --kb-task-hover-shadow-color: rgba(100, 116, 139, 0.14);
+}
+
+.kb-overview-page .kb-task-row.color-brown {
+    --kb-task-accent: rgb(120, 72, 48);
+    --kb-task-border-color: rgba(120, 72, 48, 0.30);
+    --kb-task-surface-bottom: rgba(226, 216, 212, 0.90);
+    --kb-task-shadow-color: rgba(120, 72, 48, 0.12);
+    --kb-task-hover-border-color: rgba(120, 72, 48, 0.36);
+    --kb-task-hover-shadow-color: rgba(120, 72, 48, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-deep_orange {
+    --kb-task-accent: rgb(230, 74, 25);
+    --kb-task-border-color: rgba(230, 74, 25, 0.32);
+    --kb-task-surface-bottom: rgba(255, 196, 174, 0.90);
+    --kb-task-shadow-color: rgba(234, 88, 12, 0.12);
+    --kb-task-hover-border-color: rgba(234, 88, 12, 0.38);
+    --kb-task-hover-shadow-color: rgba(234, 88, 12, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-dark_grey {
+    --kb-task-accent: rgb(69, 90, 100);
+    --kb-task-border-color: rgba(69, 90, 100, 0.30);
+    --kb-task-surface-bottom: rgba(218, 227, 232, 0.92);
+    --kb-task-shadow-color: rgba(71, 85, 105, 0.12);
+    --kb-task-hover-border-color: rgba(71, 85, 105, 0.36);
+    --kb-task-hover-shadow-color: rgba(71, 85, 105, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-pink {
+    --kb-task-accent: rgb(216, 27, 96);
+    --kb-task-border-color: rgba(216, 27, 96, 0.28);
+    --kb-task-surface-bottom: rgba(252, 202, 222, 0.88);
+    --kb-task-shadow-color: rgba(236, 72, 153, 0.12);
+    --kb-task-hover-border-color: rgba(236, 72, 153, 0.34);
+    --kb-task-hover-shadow-color: rgba(236, 72, 153, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-teal {
+    --kb-task-accent: rgb(0, 105, 92);
+    --kb-task-border-color: rgba(0, 105, 92, 0.28);
+    --kb-task-surface-bottom: rgba(180, 231, 225, 0.90);
+    --kb-task-shadow-color: rgba(13, 148, 136, 0.12);
+    --kb-task-hover-border-color: rgba(13, 148, 136, 0.34);
+    --kb-task-hover-shadow-color: rgba(13, 148, 136, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-cyan {
+    --kb-task-accent: rgb(0, 188, 212);
+    --kb-task-border-color: rgba(0, 188, 212, 0.28);
+    --kb-task-surface-bottom: rgba(204, 240, 245, 0.90);
+    --kb-task-shadow-color: rgba(6, 182, 212, 0.12);
+    --kb-task-hover-border-color: rgba(6, 182, 212, 0.34);
+    --kb-task-hover-shadow-color: rgba(6, 182, 212, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-lime {
+    --kb-task-accent: rgb(175, 180, 43);
+    --kb-task-border-color: rgba(175, 180, 43, 0.32);
+    --kb-task-surface-bottom: rgba(235, 242, 184, 0.90);
+    --kb-task-shadow-color: rgba(132, 204, 22, 0.12);
+    --kb-task-hover-border-color: rgba(132, 204, 22, 0.36);
+    --kb-task-hover-shadow-color: rgba(132, 204, 22, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-light_green {
+    --kb-task-accent: rgb(104, 159, 56);
+    --kb-task-border-color: rgba(104, 159, 56, 0.32);
+    --kb-task-surface-bottom: rgba(228, 241, 212, 0.92);
+    --kb-task-shadow-color: rgba(101, 163, 13, 0.12);
+    --kb-task-hover-border-color: rgba(101, 163, 13, 0.36);
+    --kb-task-hover-shadow-color: rgba(101, 163, 13, 0.16);
+}
+
+.kb-overview-page .kb-task-row.color-amber {
+    --kb-task-accent: rgb(255, 160, 0);
+    --kb-task-border-color: rgba(255, 160, 0, 0.32);
+    --kb-task-surface-bottom: rgba(255, 232, 161, 0.90);
+    --kb-task-shadow-color: rgba(245, 158, 11, 0.12);
+    --kb-task-hover-border-color: rgba(245, 158, 11, 0.36);
+    --kb-task-hover-shadow-color: rgba(245, 158, 11, 0.16);
 }
 
 .kb-overview-page .kb-task-side > * {
     min-width: 0;
     margin-top: 0 !important;
-    padding: 13px 15px;
-    border: 1px solid #e6eeff;
-    border-radius: 15px;
-    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+
+.kb-overview-page .kb-task-context {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.kb-overview-page .kb-context-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid rgba(223, 231, 241, 0.92);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--kb-text-soft);
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-decoration: none;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+.kb-overview-page .kb-context-chip > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.kb-overview-page .kb-context-chip .fa {
+    color: var(--kb-primary-dark);
+    font-size: 0.98rem;
+}
+
+.kb-overview-page .kb-context-chip a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.kb-overview-page .kb-context-chip a:hover {
+    color: var(--kb-primary-dark);
+}
+
+.kb-overview-page .kb-context-chip.table-list-category,
+.kb-overview-page .kb-context-chip.task-list-tag {
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 0.78rem;
+    border-radius: 13px;
+}
+
+.kb-overview-page .kb-task-row .dropdown > a,
+.kb-overview-page .kb-task-row .dropdown > .dropdown-menu-link-icon,
+.kb-overview-page .kb-task-row .dropdown > .active-dropdown-menu {
+    min-height: 42px;
+    min-width: 72px;
+    padding: 0 14px;
+    border: 1px solid rgba(223, 231, 241, 0.92);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--kb-primary-dark);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+.kb-overview-page .kb-task-row .dropdown > a:hover,
+.kb-overview-page .kb-task-row .dropdown > .dropdown-menu-link-icon:hover,
+.kb-overview-page .kb-task-row .dropdown > .active-dropdown-menu,
+.kb-overview-page .kb-task-row .dropdown.open > a {
+    border-color: rgba(201, 214, 241, 0.96);
+    background: rgba(255, 255, 255, 0.98);
+    color: var(--kb-primary-dark);
+    box-shadow: 0 12px 22px rgba(15, 23, 42, 0.06);
+    transform: none;
+}
+
+.kb-overview-page .kb-task-row .dropdown > a .fa-caret-down,
+.kb-overview-page .kb-task-row .dropdown > .dropdown-menu-link-icon .fa-caret-down,
+.kb-overview-page .kb-task-row .dropdown > .active-dropdown-menu .fa-caret-down {
+    color: #64748b;
+    transform: none;
+}
+
+.kb-overview-page .kb-task-row .table-list-title {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    color: var(--kb-text);
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+.kb-overview-page .kb-task-row .table-list-title a {
+    color: var(--kb-text) !important;
+}
+
+.kb-overview-page .kb-task-row .table-list-title a:hover {
+    color: var(--kb-primary-dark) !important;
+}
+
+.kb-overview-page .kb-task-row .task-list-avatars {
+    margin: 0;
+}
+
+.kb-overview-page .kb-task-row .task-list-avatars > span {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 50px;
+    padding: 0 16px;
+    border: 1px solid rgba(223, 231, 241, 0.92);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.04);
+    min-width: 0;
+}
+
+.kb-overview-page .kb-task-row .task-avatar-assignee {
+    overflow: hidden;
+    color: var(--kb-text-soft);
+    font-size: 0.92rem;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.kb-overview-page .kb-task-side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid rgba(223, 231, 241, 0.92);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+}
+
+.kb-overview-page .kb-task-side-panel > * {
+    min-width: 0;
+    margin-top: 0 !important;
+}
+
+.kb-overview-page .kb-task-row .task-list-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    color: var(--kb-text-soft);
+}
+
+.kb-overview-page .kb-task-row .task-list-icons > * {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 0 12px;
+    border: 1px solid rgba(229, 235, 245, 0.94);
+    border-radius: 14px;
+    background: #ffffff;
+    color: var(--kb-text-soft);
+    font-size: 0.82rem;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.03);
+}
+
+.kb-overview-page .kb-task-row .task-list-icons > a:hover,
+.kb-overview-page .kb-task-row .task-list-icons > span:hover,
+.kb-overview-page .kb-task-row .task-list-icons > div:hover {
+    border-color: rgba(196, 210, 240, 0.96);
+    color: var(--kb-primary-dark);
+}
+
+.kb-overview-page .kb-task-row .task-list-icons .fa {
+    color: #64748b;
+}
+
+.kb-overview-page .kb-task-row .task-list-icons .task-icon-age {
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.kb-overview-page .kb-task-row .task-list-icons .task-icon-age > span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 12px;
+}
+
+.kb-overview-page .kb-task-row .task-list-icons .task-icon-age > span + span {
+    border-left: 1px solid rgba(229, 235, 245, 0.94);
+}
+
+.kb-overview-page .kb-task-row .task-list-subtasks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(229, 235, 245, 0.94);
+}
+
+.kb-overview-page .kb-task-row .task-list-subtask {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(90px, 0.58fr) minmax(170px, 0.88fr);
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(229, 235, 245, 0.94);
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.03);
+}
+
+.kb-overview-page .kb-task-row .subtask-cell {
+    min-width: 0;
+    min-height: 44px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+}
+
+.kb-overview-page .kb-task-row .subtask-cell + .subtask-cell {
+    border-left: 1px solid rgba(229, 235, 245, 0.94);
+}
+
+.kb-overview-page .kb-task-row .subtask-assignee {
+    color: var(--kb-text-soft);
+    font-weight: 800;
+}
+
+.kb-overview-page .kb-task-row .subtask-time-tracking-cell {
+    justify-content: flex-end;
+}
+
+.kb-overview-page .kb-task-row .subtask-time-tracking-cell a,
+.kb-overview-page .kb-task-row .subtask-cell a {
+    color: var(--kb-primary-dark);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.kb-overview-page .kb-task-row .subtask-time-tracking-cell a:hover,
+.kb-overview-page .kb-task-row .subtask-cell a:hover {
+    color: #153ea8;
 }
 
 .kb-overview-page .kb-empty-state {
@@ -592,7 +1041,7 @@ if (! empty($overview_paginator)) {
     font-size: 0.88rem;
     font-weight: 800;
     text-decoration: none;
-    box-shadow: var(--kb-shadow-xs);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
 }
 
 .kb-overview-page .kb-pagination a:hover {
@@ -669,6 +1118,50 @@ if (! empty($overview_paginator)) {
     flex-wrap: wrap;
 }
 
+.kb-overview-page .kb-header-card .table-list-header-count {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 14px;
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    border-radius: 14px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    color: var(--kb-text-soft);
+    font-size: 0.88rem;
+    font-weight: 800;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+}
+
+.kb-overview-page .kb-header-card .table-list-header-menu,
+.kb-overview-page .kb-header-card .list-item-actions,
+.kb-overview-page .kb-header-card .list-item-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    float: none;
+    margin-left: 0;
+}
+
+.kb-overview-page .kb-header-card .list-item-links {
+    color: var(--kb-text-soft);
+    font-size: 0.84rem;
+    font-weight: 800;
+}
+
+.kb-overview-page .kb-header-card .list-item-links a {
+    color: var(--kb-primary-dark);
+    text-decoration: none;
+}
+
+.kb-overview-page .kb-header-card .list-item-links a:hover {
+    color: #153ea8;
+}
+
+.kb-overview-page .kb-header-card .list-item-actions.list-item-action-hidden {
+    display: none;
+}
+
 .kb-overview-page .kb-header-card .table-list-header > *,
 .kb-overview-page .kb-header-card .task-board-header > *,
 .kb-overview-page .kb-header-card .project-list-header > *,
@@ -681,61 +1174,79 @@ if (! empty($overview_paginator)) {
 .kb-overview-page .dropdown {
     position: relative;
     z-index: 5;
+    display: inline-flex;
+    flex: 0 0 auto;
+    min-width: 0;
 }
 
 .kb-overview-page .project-dropdown > a,
 .kb-overview-page .dropdown > a,
-.kb-overview-page .project-dropdown .dropdown-menu-link-icon,
-.kb-overview-page .dropdown .dropdown-menu-link-icon,
+.kb-overview-page .project-dropdown > .dropdown-menu-link-icon,
+.kb-overview-page .project-dropdown > .active-dropdown-menu,
+.kb-overview-page .dropdown > .dropdown-menu-link-icon,
+.kb-overview-page .dropdown > .active-dropdown-menu,
 .kb-overview-page .kb-header-card .dropdown > a,
-.kb-overview-page .kb-header-card .dropdown .dropdown-menu-link-icon {
+.kb-overview-page .kb-header-card .dropdown > .dropdown-menu-link-icon,
+.kb-overview-page .kb-header-card .dropdown > .active-dropdown-menu {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
+    flex-shrink: 0;
     gap: 8px;
-    min-height: 40px;
-    padding: 0 14px;
-    border: 1px solid #d8e3ff;
-    border-radius: 12px;
-    background: #ffffff;
-    color: #334155;
+    min-height: 42px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    border: 1px solid #dfe8fb;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+    color: #42526b;
     text-decoration: none;
-    font-size: 0.86rem;
+    font-size: 0.85rem;
     font-weight: 800;
     line-height: 1;
     box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
     transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    white-space: nowrap;
 }
 
 .kb-overview-page .project-dropdown > a:hover,
 .kb-overview-page .dropdown > a:hover,
-.kb-overview-page .project-dropdown .dropdown-menu-link-icon:hover,
-.kb-overview-page .dropdown .dropdown-menu-link-icon:hover,
+.kb-overview-page .project-dropdown > .dropdown-menu-link-icon:hover,
+.kb-overview-page .project-dropdown > .active-dropdown-menu,
+.kb-overview-page .dropdown > .dropdown-menu-link-icon:hover,
+.kb-overview-page .dropdown > .active-dropdown-menu,
 .kb-overview-page .project-dropdown.open > a,
 .kb-overview-page .dropdown.open > a,
-.kb-overview-page .project-dropdown .dropdown-menu-link-icon:focus,
-.kb-overview-page .dropdown .dropdown-menu-link-icon:focus {
-    border-color: #b8cbff;
-    background: #f8fbff;
+.kb-overview-page .project-dropdown > .dropdown-menu-link-icon:focus,
+.kb-overview-page .dropdown > .dropdown-menu-link-icon:focus {
+    border-color: #c6d9fd;
+    background: linear-gradient(180deg, #fbfdff 0%, #eef5ff 100%);
     color: var(--kb-primary-dark);
-    box-shadow: 0 14px 28px rgba(0, 17, 255, 0.10);
+    box-shadow: 0 14px 26px rgba(0, 17, 255, 0.08);
     transform: translateY(-1px);
 }
 
 .kb-overview-page .project-dropdown > a strong,
 .kb-overview-page .dropdown > a strong,
-.kb-overview-page .project-dropdown .dropdown-menu-link-icon strong,
-.kb-overview-page .dropdown .dropdown-menu-link-icon strong {
+.kb-overview-page .project-dropdown > .dropdown-menu-link-icon strong,
+.kb-overview-page .project-dropdown > .active-dropdown-menu strong,
+.kb-overview-page .dropdown > .dropdown-menu-link-icon strong,
+.kb-overview-page .dropdown > .active-dropdown-menu strong {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
+    width: 100%;
     font-weight: 800;
 }
 
 .kb-overview-page .project-dropdown > a .fa-caret-down,
 .kb-overview-page .dropdown > a .fa-caret-down,
-.kb-overview-page .project-dropdown .dropdown-menu-link-icon .fa-caret-down,
-.kb-overview-page .dropdown .dropdown-menu-link-icon .fa-caret-down {
+.kb-overview-page .project-dropdown > .dropdown-menu-link-icon .fa-caret-down,
+.kb-overview-page .project-dropdown > .active-dropdown-menu .fa-caret-down,
+.kb-overview-page .dropdown > .dropdown-menu-link-icon .fa-caret-down,
+.kb-overview-page .dropdown > .active-dropdown-menu .fa-caret-down {
     color: #94a3b8;
     font-size: 0.84rem;
     transition: transform 0.18s ease, color 0.18s ease;
@@ -745,17 +1256,17 @@ if (! empty($overview_paginator)) {
 .kb-overview-page .dropdown:hover > a .fa-caret-down,
 .kb-overview-page .project-dropdown.open > a .fa-caret-down,
 .kb-overview-page .dropdown.open > a .fa-caret-down,
-.kb-overview-page .project-dropdown .dropdown-menu-link-icon:hover .fa-caret-down,
-.kb-overview-page .dropdown .dropdown-menu-link-icon:hover .fa-caret-down {
+.kb-overview-page .project-dropdown > .dropdown-menu-link-icon:hover .fa-caret-down,
+.kb-overview-page .project-dropdown > .active-dropdown-menu .fa-caret-down,
+.kb-overview-page .dropdown > .dropdown-menu-link-icon:hover .fa-caret-down,
+.kb-overview-page .dropdown > .active-dropdown-menu .fa-caret-down {
     color: var(--kb-primary-dark);
     transform: translateY(1px);
 }
 
 /* Modern dropdown menu */
 .kb-overview-page .project-dropdown > ul,
-.kb-overview-page .dropdown > ul,
-.kb-overview-page .project-dropdown .dropdown-menu,
-.kb-overview-page .dropdown .dropdown-menu {
+.kb-overview-page .dropdown > ul {
     min-width: 240px;
     margin-top: 10px;
     padding: 8px;
@@ -763,31 +1274,26 @@ if (! empty($overview_paginator)) {
     border-radius: 16px;
     background: #ffffff;
     box-shadow: 0 24px 44px rgba(15, 23, 42, 0.16);
+    max-height: min(360px, calc(100vh - 72px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .kb-overview-page .project-dropdown > ul li,
-.kb-overview-page .dropdown > ul li,
-.kb-overview-page .project-dropdown .dropdown-menu li,
-.kb-overview-page .dropdown .dropdown-menu li {
+.kb-overview-page .dropdown > ul li {
     margin: 0;
     list-style: none;
 }
 
 .kb-overview-page .project-dropdown > ul li + li,
-.kb-overview-page .dropdown > ul li + li,
-.kb-overview-page .project-dropdown .dropdown-menu li + li,
-.kb-overview-page .dropdown .dropdown-menu li + li {
+.kb-overview-page .dropdown > ul li + li {
     margin-top: 4px;
 }
 
 .kb-overview-page .project-dropdown > ul a,
 .kb-overview-page .dropdown > ul a,
-.kb-overview-page .project-dropdown .dropdown-menu a,
-.kb-overview-page .dropdown .dropdown-menu a,
 .kb-overview-page .project-dropdown > ul .dropdown-menu-link-icon,
-.kb-overview-page .dropdown > ul .dropdown-menu-link-icon,
-.kb-overview-page .project-dropdown .dropdown-menu .dropdown-menu-link-icon,
-.kb-overview-page .dropdown .dropdown-menu .dropdown-menu-link-icon {
+.kb-overview-page .dropdown > ul .dropdown-menu-link-icon {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -806,12 +1312,8 @@ if (! empty($overview_paginator)) {
 
 .kb-overview-page .project-dropdown > ul a:hover,
 .kb-overview-page .dropdown > ul a:hover,
-.kb-overview-page .project-dropdown .dropdown-menu a:hover,
-.kb-overview-page .dropdown .dropdown-menu a:hover,
 .kb-overview-page .project-dropdown > ul .dropdown-menu-link-icon:hover,
-.kb-overview-page .dropdown > ul .dropdown-menu-link-icon:hover,
-.kb-overview-page .project-dropdown .dropdown-menu .dropdown-menu-link-icon:hover,
-.kb-overview-page .dropdown .dropdown-menu .dropdown-menu-link-icon:hover {
+.kb-overview-page .dropdown > ul .dropdown-menu-link-icon:hover {
     border-color: transparent;
     background: #000ba6;
     background: linear-gradient(90deg, rgba(0, 11, 166, 1) 0%, rgba(0, 17, 255, 1) 100%);
@@ -821,19 +1323,25 @@ if (! empty($overview_paginator)) {
 }
 
 .kb-overview-page .project-dropdown > ul .fa,
-.kb-overview-page .dropdown > ul .fa,
-.kb-overview-page .project-dropdown .dropdown-menu .fa,
-.kb-overview-page .dropdown .dropdown-menu .fa {
+.kb-overview-page .dropdown > ul .fa {
     width: 16px;
     text-align: center;
     color: #64748b;
 }
 
 .kb-overview-page .project-dropdown > ul a:hover .fa,
-.kb-overview-page .dropdown > ul a:hover .fa,
-.kb-overview-page .project-dropdown .dropdown-menu a:hover .fa,
-.kb-overview-page .dropdown .dropdown-menu a:hover .fa {
+.kb-overview-page .dropdown > ul a:hover .fa {
     color: #ffffff;
+}
+
+.kb-overview-page .kb-project-top .kb-project-switcher-dropdown {
+    width: clamp(112px, 17vw, 196px);
+}
+
+.kb-overview-page .kb-project-top .kb-project-switcher-trigger,
+.kb-overview-page .kb-project-top .kb-project-switcher-trigger.active-dropdown-menu {
+    width: 100%;
+    min-width: 0;
 }
 
 /* Make project row top section easier to scan */
@@ -859,17 +1367,17 @@ if (! empty($overview_paginator)) {
 
 /* Assigned tasks cards cleaner */
 .kb-overview-page .kb-task-content {
-    grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.95fr);
-    gap: 20px;
+    grid-template-columns: minmax(0, 1.5fr) minmax(360px, 0.95fr);
+    gap: 22px;
 }
 
 .kb-overview-page .kb-task-side {
     align-self: stretch;
-    gap: 10px;
+    gap: 14px;
 }
 
 .kb-overview-page .kb-task-side > * {
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+    box-shadow: none;
 }
 
 .kb-overview-page .kb-task-row .task-title,
@@ -877,9 +1385,40 @@ if (! empty($overview_paginator)) {
     font-size: 1rem;
 }
 
+.kb-overview-page .kb-search-tools .dropdown > a,
+.kb-overview-page .kb-search-tools .dropdown > .dropdown-menu-link-icon,
+.kb-overview-page .kb-search-tools .dropdown > .active-dropdown-menu {
+    min-width: 52px;
+    width: 52px;
+    height: 42px;
+    min-height: 42px;
+    padding: 0;
+    border-radius: 14px;
+    box-shadow: none;
+}
+
+.kb-overview-page .kb-search-tools .dropdown > a strong,
+.kb-overview-page .kb-search-tools .dropdown > .dropdown-menu-link-icon strong,
+.kb-overview-page .kb-search-tools .dropdown > .active-dropdown-menu strong {
+    justify-content: center;
+}
+
 @media (max-width: 1199.98px) {
     .kb-overview-page .kb-task-content {
         grid-template-columns: minmax(0, 1fr);
+    }
+
+    .kb-overview-page .kb-task-row .task-list-subtask {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .kb-overview-page .kb-task-row .subtask-cell {
+        min-height: 46px;
+    }
+
+    .kb-overview-page .kb-task-row .subtask-cell + .subtask-cell {
+        border-left: 0;
+        border-top: 1px solid rgba(229, 235, 245, 0.94);
     }
 }
 
@@ -904,9 +1443,7 @@ if (! empty($overview_paginator)) {
     }
 
     .kb-overview-page .project-dropdown > ul,
-    .kb-overview-page .dropdown > ul,
-    .kb-overview-page .project-dropdown .dropdown-menu,
-    .kb-overview-page .dropdown .dropdown-menu {
+    .kb-overview-page .dropdown > ul {
         min-width: min(280px, calc(100vw - 48px));
     }
 }
@@ -929,7 +1466,24 @@ if (! empty($overview_paginator)) {
 
     .kb-overview-page .kb-project-content,
     .kb-overview-page .kb-task-content {
-        padding: 18px 16px 18px 20px;
+        padding: 16px 16px 16px 20px;
+    }
+
+    .kb-overview-page .kb-task-main > div:first-child {
+        gap: 12px;
+    }
+
+    .kb-overview-page .kb-context-chip {
+        min-height: 42px;
+        padding: 0 14px;
+        font-size: 0.86rem;
+    }
+
+    .kb-overview-page .kb-task-row .dropdown > a,
+    .kb-overview-page .kb-task-row .dropdown > .dropdown-menu-link-icon,
+    .kb-overview-page .kb-task-row .dropdown > .active-dropdown-menu {
+        min-height: 44px;
+        min-width: 76px;
     }
 
     .kb-overview-page .kb-search-row {
@@ -1120,32 +1674,34 @@ if (! empty($overview_paginator)) {
                                 <?php foreach ($result['paginator']->getCollection() as $task): ?>
                                     <div class="table-list-row color-<?= $task['color_id'] ?> kb-task-row">
                                         <div class="kb-task-content">
-                                            <div>
+                                            <div class="kb-task-main">
                                                 <?= $this->render('task_list/task_title', array(
                                                     'task' => $task,
                                                     'redirect' => 'dashboard',
                                                 )) ?>
+
+                                                <?= $this->render('dashboard/task_context', array(
+                                                    'task' => $task,
+                                                )) ?>
                                             </div>
 
                                             <div class="kb-task-side">
-                                                <?= $this->render('task_list/task_details', array(
-                                                    'task' => $task,
-                                                )) ?>
-
                                                 <?= $this->render('task_list/task_avatars', array(
                                                     'task' => $task,
                                                 )) ?>
 
-                                                <?= $this->render('task_list/task_icons', array(
-                                                    'task' => $task,
-                                                )) ?>
+                                                <div class="kb-task-side-panel">
+                                                    <?= $this->render('task_list/task_icons', array(
+                                                        'task' => $task,
+                                                    )) ?>
 
-                                                <?= $this->render('task_list/task_subtasks', array(
-                                                    'task'    => $task,
-                                                    'user_id' => $user['id'],
-                                                )) ?>
+                                                    <?= $this->render('task_list/task_subtasks', array(
+                                                        'task'    => $task,
+                                                        'user_id' => $user['id'],
+                                                    )) ?>
 
-                                                <?= $this->hook->render('template:dashboard:task:footer', array('task' => $task)) ?>
+                                                    <?= $this->hook->render('template:dashboard:task:footer', array('task' => $task)) ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -1,4 +1,4 @@
-<div class="task-list-icons">
+<div class="task-list-icons kb-task-list-icons">
     <?php if ($task['reference']): ?>
         <span class="task-board-reference" title="<?= t('Reference') ?>">
             <span class="ui-helper-hidden-accessible"><?= t('Reference') ?> </span><?= $this->task->renderReference($task) ?>

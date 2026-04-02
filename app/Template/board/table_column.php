@@ -89,13 +89,13 @@
 
             <span class="pull-right board-column-header-task-count kb-board-column-stats">
                 <?php if (! empty($column['score'])): ?>
-                    <span title="<?= t('Score') ?>">
+                    <span class="kb-board-column-stat-pill kb-board-column-stat-score" title="<?= t('Score') ?>">
                         <span class="ui-helper-hidden-accessible"><?= t('Score') ?> </span><?= $column['score'] ?>
                     </span>
                 <?php endif ?>
 
                 <?php if ($swimlane['nb_swimlanes'] > 1 && ! empty($column['cumulative_score_across_swimlane'])): ?>
-                    <span title="<?= t('Total score in this column across all swimlanes') ?>">
+                    <span class="kb-board-column-stat-pill kb-board-column-stat-cumulative-score" title="<?= t('Total score in this column across all swimlanes') ?>">
                         (<span><span class="ui-helper-hidden-accessible"><?= t('Total score in this column across all swimlanes') ?> </span><?= $column['cumulative_score_across_swimlane'] ?></span>)&nbsp;
                     </span>
                 <?php endif ?>
@@ -105,13 +105,13 @@
                 <?php endif ?>
 
                 <?php if (! empty($column['nb_tasks'])): ?>
-                <span title="<?= t('Number of visible tasks in this column and swimlane') ?>">
+                <span class="kb-board-column-stat-pill kb-board-column-stat-visible" title="<?= t('Number of visible tasks in this column and swimlane') ?>">
                     <span><span class="ui-helper-hidden-accessible"><?= t('Task count') ?> </span><?= $column['nb_tasks'] ?></span>&nbsp;
                 </span>
                 <?php endif ?>
 
                 <?php if (! empty($column['nb_unfiltered_tasks_across_swimlane'])): ?>
-                <span title="<?= t('Total number of tasks in this column across all swimlanes') ?>">
+                <span class="kb-board-column-stat-pill kb-board-column-stat-total" title="<?= t('Total number of tasks in this column across all swimlanes') ?>">
                     <?php if ($column['task_limit'] > 0): ?>
                         (<span><span class="ui-helper-hidden-accessible"><?= t('Total number of tasks in this column across all swimlanes') ?> </span><?= $column['nb_unfiltered_tasks_across_swimlane'] ?></span>/<span title="<?= t('Task limit') ?>"><span class="ui-helper-hidden-accessible"><?= t('Task limit') ?> </span><?= $this->text->e($column['task_limit']) ?></span>)
                     <?php else: ?>

@@ -1,11 +1,11 @@
 <?php if (! empty($task['owner_id'])): ?>
-    <div class="task-list-avatars">
+    <div class="task-list-avatars kb-task-list-avatars">
         <span
             <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
-            class="task-board-change-assignee"
+            class="task-board-change-assignee kb-task-list-assignee-pill"
             data-url="<?= $this->url->href('TaskModificationController', 'edit', array('task_id' => $task['id'])) ?>">
         <?php else: ?>
-            class="task-board-assignee">
+            class="task-board-assignee kb-task-list-assignee-pill">
         <?php endif ?>
             <?= $this->avatar->small(
                 $task['owner_id'],

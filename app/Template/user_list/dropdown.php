@@ -52,12 +52,6 @@
             </li>
         <?php endif ?>
 
-        <?php if ($this->user->isAdmin()): ?>
-            <li>
-                <?= $this->url->icon('dashboard', t('User dashboard'), 'DashboardController', 'show', array('user_id' => $user['id'])) ?>
-            </li>
-        <?php endif ?>
-
         <?php if ($this->user->isAdmin() || $this->user->isCurrentUser($user['id'])): ?>
             <?php if ($this->user->hasAccess('UserViewController', 'timesheet')): ?>
                 <li>
